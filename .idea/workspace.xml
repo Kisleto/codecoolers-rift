@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="115ba532-06f9-4641-9b48-0003b67e61af" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="115ba532-06f9-4641-9b48-0003b67e61af" name="Default Changelist" comment="commit for pull">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/my-app/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/my-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/my-app/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/my-app/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/my-app/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/codecoolers_rift/apihandler/SummonerRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/codecoolers_rift/apihandler/SummonerRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/codecoolers_rift/controller/SummonerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/codecoolers_rift/controller/SummonerController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -145,6 +138,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/example/codecoolers_rift/apihandler/SummonerRequest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/codecoolers_rift/controller/SummonerController.java" />
         <option value="$PROJECT_DIR$/FrontEnd/my-app/src/App.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -459,7 +453,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549973195471" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549973269516" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/BackEnd" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -512,16 +506,37 @@
       <option name="project" value="LOCAL" />
       <updated>1549959304518</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="axios added">
+      <created>1549973172150</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1549973172150</updated>
+    </task>
+    <task id="LOCAL-00003" summary="commit for pull">
+      <created>1549973214891</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1549973214891</updated>
+    </task>
+    <task id="LOCAL-00004" summary="commit for pull">
+      <created>1549973264424</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1549973264424</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8307000" />
+    <option name="totallyTimeSpent" value="8554000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-4" width="1366" height="772" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -531,14 +546,14 @@
       <window_info id="Image Layers" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.23100775" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924242" visible="true" weight="0.23100775" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39967373" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32868218" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="9" sideWeight="0.5007576" side_tool="true" visible="true" weight="0.23100775" />
       <window_info anchor="bottom" id="Problems" order="10" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
@@ -561,12 +576,11 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Basic Business Logic and APIRequest Handler created" />
-    <option name="LAST_COMMIT_MESSAGE" value="Basic Business Logic and APIRequest Handler created" />
+    <MESSAGE value="axios added" />
+    <MESSAGE value="commit for pull" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit for pull" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -652,6 +666,13 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="16" lean-forward="true" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
         </state>
       </provider>
     </entry>
