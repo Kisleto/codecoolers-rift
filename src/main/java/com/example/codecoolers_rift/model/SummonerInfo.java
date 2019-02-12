@@ -39,6 +39,23 @@ public class SummonerInfo {
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
+
+    public SummonerInfo(Integer profileIconId, String name, String puuid,
+                        Integer summonerLevel, String accountId, String id,
+                        Long revisionDate, Map<String, Object> additionalProperties) {
+        this.profileIconId = profileIconId;
+        this.name = name;
+        this.puuid = puuid;
+        this.summonerLevel = summonerLevel;
+        this.accountId = accountId;
+        this.id = id;
+        this.revisionDate = revisionDate;
+        this.additionalProperties = additionalProperties;
+    }
+
+    public SummonerInfo() {
+    }
+
     public String getName() {
         return name;
     }
