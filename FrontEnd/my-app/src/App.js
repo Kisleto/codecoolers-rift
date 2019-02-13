@@ -7,7 +7,7 @@ class App extends Component {
         persons: []
     };
     componentDidMount() {
-        axios.get(`http://localhost:8080/champion-mastery`)
+        axios.get(`http://localhost:8080`)
             .then(res => {
                 const persons = res.data;
                 this.setState({ persons });
@@ -17,7 +17,7 @@ class App extends Component {
     render() {
         return (
             <ul>
-                { this.state.persons.map(person => <li>{person.championLevel}</li>)}
+                { this.state.persons.map(person => <li>{person.name}</li>)}
             </ul>
 
         )
