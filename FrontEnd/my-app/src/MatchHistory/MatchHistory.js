@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
 import axios from 'axios';
 import { withStyles } from '@material-ui/core/styles';
 
 const style = theme => {
-    #li = ""
+
 };
 
 class MatchHistory extends Component {
@@ -23,7 +22,6 @@ class MatchHistory extends Component {
         return (
             <ul>
                 { this.state.persons.map(person => <li>{person.name}</li>)}
-                { this.state.persons.map(person => <li>{person}</li>)}
             </ul>
         )
     }
