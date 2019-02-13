@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class MatchHistoryService {
-    String key = "RGAPI-14775a19-0241-4a92-a014-f4c43d81fa9e";
+    String key = "RGAPI-21d208a9-b1f0-49fa-890e-86632b302139";
     String url = "https://eun1.api.riotgames.com/lol/match/v4/matches/2127877692?api_key="+key;
     @Autowired
     private MatchHistoryRequest matchHistoryRequest;
