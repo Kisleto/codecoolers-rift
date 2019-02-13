@@ -8,7 +8,7 @@ import org.springframework.web.client.RestTemplate;
 public class SummonerRequest {
 
 
-    private static String key = "RGAPI-14775a19-0241-4a92-a014-f4c43d81fa9e";
+    private static String key = "RGAPI-21d208a9-b1f0-49fa-890e-86632b302139";
     private static String url = "https://eun1.api.riotgames.com/lol/summoner/v4/summoners/by-name/Coppeliuss?api_key="+key;
 
 
