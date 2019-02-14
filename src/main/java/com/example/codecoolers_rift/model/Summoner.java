@@ -1,5 +1,6 @@
 package com.example.codecoolers_rift.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class Summoner {
     private long championLevel;
     private long championPoints;
     private long championId;
+    @JsonProperty("ranks")
     private List<LeagueRank> summonerRank = new ArrayList<>();
 
 
