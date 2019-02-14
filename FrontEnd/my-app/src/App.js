@@ -21,14 +21,22 @@ const styles = theme => ({
 
 class App extends Component {
     state = {
-        persons: []
-    };
+        query: '',
+        results: []
+    }
+    handleInputChange = () => {
+        this.setState({
+            query: this.search.value
+        })
+    }
 
-    componentDidMount() {
-        axios.get(`http://localhost:8080/euw1/VoidWar`)
-            .then(res => {
-                const persons = res.data;
-                this.setState({persons});
+    getInfo = () => {
+        axios.get((`http://localhost:8080/euw1/${this.state.query}`))
+            .then(({data}) =>{
+                this.setState({
+                    results: data.data
+                })
+                console.log(data)
             })
     }
 
