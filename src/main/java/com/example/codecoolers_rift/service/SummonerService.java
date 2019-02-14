@@ -1,6 +1,7 @@
 package com.example.codecoolers_rift.service;
 
 import com.example.codecoolers_rift.apihandler.SummonerRequest;
+import com.example.codecoolers_rift.model.ChampionMastery;
 import com.example.codecoolers_rift.model.LeagueRank;
 import com.example.codecoolers_rift.model.Summoner;
 import com.example.codecoolers_rift.model.SummonerInfo;
@@ -17,12 +18,15 @@ public class SummonerService {
     private SummonerInfo summonerInfo;
     private Summoner summoner;
     private LeagueRank[] leagueRank;
+    private ChampionMastery[] championMasteries;
 
     public Summoner getSummoner(String region, String name){
         summonerInfo = summonerRequest.callRestAPI(region, name);
         leagueRank = summonerRequest.callRankRestAPI(region,summonerInfo.getId());
+        championMasteries = summonerRequest.callCMRestApi(region, summonerInfo.getId());
         fillSummonerData();
         fillRankData(summoner, leagueRank);
+        fillMasteryData(summoner, championMasteries);
         return summoner;
     }
 
@@ -37,6 +41,10 @@ public class SummonerService {
     private void fillRankData(Summoner summoner, LeagueRank[] leagueRanks){
         summoner.setSummonerRank(summoner.addtoLeaguerank(leagueRanks));
 
+    }
+
+    private void fillMasteryData(Summoner summoner, ChampionMastery[] championMasteries){
+        summoner.addtoMasteryRank(championMasteries);
     }
 
 }

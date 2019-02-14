@@ -1,5 +1,6 @@
 package com.example.codecoolers_rift.apihandler;
 
+import com.example.codecoolers_rift.model.ChampionMastery;
 import com.example.codecoolers_rift.model.LeagueRank;
 import com.example.codecoolers_rift.model.Summoner;
 import com.example.codecoolers_rift.model.SummonerInfo;
@@ -10,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 public class SummonerRequest {
 
 
-    private static String key = "RGAPI-21d208a9-b1f0-49fa-890e-86632b302139";
+    private static String key = "RGAPI-3edbfe4c-2118-4d1e-a4fe-933e19427ec6";
 
 
 
@@ -30,6 +31,13 @@ public class SummonerRequest {
                 .getForObject(url, LeagueRank[].class);
         return leagueRank;
 
+    }
+    public ChampionMastery[] callCMRestApi(String region,String id) {
+        String url = "https://"+region+".api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/"+id+"?api_key="+key;
+        RestTemplate restTemplate = new RestTemplate();
+        ChampionMastery[] championMastery = restTemplate
+                .getForObject(url, ChampionMastery[].class);
+        return championMastery;
     }
 
 }

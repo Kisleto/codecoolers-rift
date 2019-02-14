@@ -51,11 +51,11 @@ public class LeagueRank {
     private Boolean freshBlood;
     @JsonProperty("position")
     private String position;
-    @JsonProperty("leagueId")
+    @JsonIgnore
     private String leagueId;
     @JsonProperty("queueType")
     private String queueType;
-    @JsonProperty("summonerId")
+    @JsonIgnore
     private String summonerId;
     @JsonProperty("leaguePoints")
     private Integer leaguePoints;

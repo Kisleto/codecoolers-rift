@@ -1,5 +1,6 @@
 package com.example.codecoolers_rift.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -13,12 +14,15 @@ public class Summoner {
     private Integer profileIconId;
     private String name;
     private Integer summonerLevel;
+    @JsonIgnore
     private String id;
     private long championLevel;
     private long championPoints;
     private long championId;
     @JsonProperty("ranks")
     private List<LeagueRank> summonerRank = new ArrayList<>();
+    @JsonProperty("mastery_level")
+    private List<ChampionMastery> championMasteryArrayList = new ArrayList<>();
 
 
     public Summoner() {
@@ -99,6 +103,12 @@ public class Summoner {
             summonerRank.add(leagueRank1);
         }
         return summonerRank;
+    }
+
+    public void addtoMasteryRank(ChampionMastery[] championMasteries){
+        for (ChampionMastery championMastery:championMasteries) {
+            championMasteryArrayList.add(championMastery);
+        }
     }
 
     public void setSummonerRank(List<LeagueRank> summonerRank) {
