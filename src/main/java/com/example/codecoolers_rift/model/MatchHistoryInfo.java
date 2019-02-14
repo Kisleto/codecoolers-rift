@@ -25,11 +25,11 @@ import com.fasterxml.jackson.annotation.*;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MatchHistoryInfo{
         @JsonProperty("seasonId")
-        private Integer seasonId;
+        private int seasonId;
         @JsonProperty("queueId")
-        private Integer queueId;
+        private int queueId;
         @JsonProperty("gameId")
-        private Integer gameId;
+        private Long gameId;
         @JsonProperty("participantIdentities")
         private List<ParticipantIdentity> participantIdentities = new ArrayList<ParticipantIdentity>();
         @JsonProperty("gameVersion")
@@ -65,16 +65,6 @@ public class MatchHistoryInfo{
         @JsonProperty("queueId")
         public void setQueueId(Integer queueId) {
             this.queueId = queueId;
-        }
-
-        @JsonProperty("gameId")
-        public Integer getGameId() {
-            return gameId;
-        }
-
-        @JsonProperty("gameId")
-        public void setGameId(Integer gameId) {
-            this.gameId = gameId;
         }
 
         @JsonProperty("participantIdentities")

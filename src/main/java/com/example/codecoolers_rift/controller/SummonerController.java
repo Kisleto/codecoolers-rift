@@ -3,6 +3,7 @@ package com.example.codecoolers_rift.controller;
 import com.example.codecoolers_rift.model.Summoner;
 import com.example.codecoolers_rift.model.SummonerInfo;
 import com.example.codecoolers_rift.service.SummonerService;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

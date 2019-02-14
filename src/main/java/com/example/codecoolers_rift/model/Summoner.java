@@ -5,11 +5,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Summoner {
 
-    @Autowired
 
     private Integer profileIconId;
     private String name;
@@ -23,7 +23,10 @@ public class Summoner {
     private List<LeagueRank> summonerRank = new ArrayList<>();
     @JsonProperty("mastery_level")
     private List<ChampionMastery> championMasteryArrayList = new ArrayList<>();
-
+    @JsonProperty("match")
+    private List<Match> topMatches = new ArrayList<>();
+    @JsonProperty("matches")
+    private List<MatchHistoryInfo> lastMatches= new ArrayList<>();
 
     public Summoner() {
 
@@ -99,19 +102,27 @@ public class Summoner {
     }
 
     public List<LeagueRank> addtoLeaguerank(LeagueRank[] leagueRanks){
-        for (LeagueRank leagueRank1: leagueRanks){
-            summonerRank.add(leagueRank1);
-        }
+        Collections.addAll(summonerRank, leagueRanks);
         return summonerRank;
     }
 
-    public void addtoMasteryRank(ChampionMastery[] championMasteries){
-        for (ChampionMastery championMastery:championMasteries) {
-            championMasteryArrayList.add(championMastery);
-        }
+    public void addtoMasteryRank(ChampionMastery championMastery){
+        Collections.addAll(championMasteryArrayList, championMastery);
     }
 
     public void setSummonerRank(List<LeagueRank> summonerRank) {
         this.summonerRank = summonerRank;
+    }
+
+    public void addToTopMatches(Match match){
+        topMatches.add(match);
+    }
+
+    public void addToLastMatches(MatchHistoryInfo matchHistoryInfo){
+        lastMatches.add(matchHistoryInfo);
+    }
+
+    public List<Match> getTopMatches() {
+        return topMatches;
     }
 }
