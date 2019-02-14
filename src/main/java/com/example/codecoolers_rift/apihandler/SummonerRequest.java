@@ -1,11 +1,13 @@
 package com.example.codecoolers_rift.apihandler;
 
-import com.example.codecoolers_rift.model.ChampionMastery;
-import com.example.codecoolers_rift.model.LeagueRank;
-import com.example.codecoolers_rift.model.Summoner;
-import com.example.codecoolers_rift.model.SummonerInfo;
+import com.example.codecoolers_rift.model.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+
+import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 @Component
 public class SummonerRequest {
@@ -39,5 +41,24 @@ public class SummonerRequest {
                 .getForObject(url, ChampionMastery[].class);
         return championMastery;
     }
+
+    public MatchID callMatchIDRestApi(String region, String accountId){
+        String url = "https://"+region+".api.riotgames.com/lol/match/v4/matchlists/by-account/"+accountId+"?api_key="+key;
+        RestTemplate restTemplate = new RestTemplate();
+        MatchID matches =
+                restTemplate.getForObject(url, MatchID.class);
+        return matches;
+
+    }
+
+    public MatchHistoryInfo callMatchRestAPI(String region, Long gameID){
+        String url = "https://"+region+".api.riotgames.com/lol/match/v4/matches/"+gameID+"?api_key="+key;
+        RestTemplate restTemplate = new RestTemplate();
+        MatchHistoryInfo matchHistoryInfo = restTemplate
+                .getForObject(url, MatchHistoryInfo.class);
+        return matchHistoryInfo;
+
+    }
+
 
 }

@@ -1,14 +1,13 @@
 package com.example.codecoolers_rift.service;
 
 import com.example.codecoolers_rift.apihandler.SummonerRequest;
-import com.example.codecoolers_rift.model.ChampionMastery;
-import com.example.codecoolers_rift.model.LeagueRank;
-import com.example.codecoolers_rift.model.Summoner;
-import com.example.codecoolers_rift.model.SummonerInfo;
+import com.example.codecoolers_rift.model.*;
+import com.fasterxml.jackson.databind.deser.DataFormatReaders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 
 @Service
 public class SummonerService {
@@ -17,16 +16,20 @@ public class SummonerService {
     private SummonerRequest summonerRequest;
     private SummonerInfo summonerInfo;
     private Summoner summoner;
-    private LeagueRank[] leagueRank;
-    private ChampionMastery[] championMasteries;
 
     public Summoner getSummoner(String region, String name){
         summonerInfo = summonerRequest.callRestAPI(region, name);
-        leagueRank = summonerRequest.callRankRestAPI(region,summonerInfo.getId());
-        championMasteries = summonerRequest.callCMRestApi(region, summonerInfo.getId());
+        LeagueRank[] leagueRank = summonerRequest.callRankRestAPI(region, summonerInfo.getId());
+        ChampionMastery[] championMasteries = summonerRequest.callCMRestApi(region, summonerInfo.getId());
+        MatchID matches = summonerRequest.callMatchIDRestApi(region, summonerInfo.getAccountId());
         fillSummonerData();
         fillRankData(summoner, leagueRank);
         fillMasteryData(summoner, championMasteries);
+        fillMatchIDData(summoner, matches);
+        for (Match match: summoner.getTopMatches()) {
+            MatchHistoryInfo currentGame = summonerRequest.callMatchRestAPI(region, match.getGameId());
+            fillMatchHistory(summoner, currentGame);
+        }
         return summoner;
     }
 
@@ -44,7 +47,20 @@ public class SummonerService {
     }
 
     private void fillMasteryData(Summoner summoner, ChampionMastery[] championMasteries){
-        summoner.addtoMasteryRank(championMasteries);
+        for (int i=0; i <3; i++){
+            summoner.addtoMasteryRank(championMasteries[i]);
+        }
+    }
+
+    private void fillMatchIDData(Summoner summoner, MatchID matchID){
+        List<Match> topMatches = matchID.getMatches();
+        for (int i=0; i < 5; i++){
+            summoner.addToTopMatches(topMatches.get(i));
+        }
+    }
+
+    private void fillMatchHistory(Summoner summoner, MatchHistoryInfo matchHistoryInfo){
+        summoner.addToLastMatches(matchHistoryInfo);
     }
 
 }
