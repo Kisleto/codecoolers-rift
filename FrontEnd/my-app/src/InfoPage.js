@@ -2,16 +2,16 @@ import Header from "./components/header";
 import Panel from "./components/panel";
 import React, {Component} from "react";
 import axios from "axios";
-
 class InfoPage extends Component{
     state = {
         persons: []
     };
     componentDidMount() {
-        axios.get(`http://localhost:8080`)
+        axios.get(`http://localhost:8080/euw1/VoidWar`)
             .then(res => {
                 const persons = res.data;
                 this.setState({ persons });
+
             })
     }
 
@@ -19,8 +19,7 @@ class InfoPage extends Component{
         return (
             <div>
             <Header/>
-        { this.state.persons.map(person => <li>{person.name}</li>)}
-        <Panel/>
+            <Panel persons={this.state.persons}/>
             </div>
         )
     }
