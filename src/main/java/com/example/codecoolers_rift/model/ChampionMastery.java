@@ -18,11 +18,11 @@ import com.fasterxml.jackson.annotation.*;
         "lastPlayTime"
 })
 
-public class ChampionMInfo {
+public class ChampionMastery {
 
-    ChampionMInfo(){}
+    ChampionMastery(){}
 
-    public ChampionMInfo(long championLevel, boolean chestGranted, long championPoints, long championPointsSinceLastLevel, long championPointsUntilNextLevel, String summonerId, long tokensEarned, long championId, long lastPlayTime, Map<String, Object> additionalProperties) {
+    public ChampionMastery(long championLevel, boolean chestGranted, long championPoints, long championPointsSinceLastLevel, long championPointsUntilNextLevel, String summonerId, long tokensEarned, long championId, long lastPlayTime, Map<String, Object> additionalProperties) {
         this.championLevel = championLevel;
         this.chestGranted = chestGranted;
         this.championPoints = championPoints;

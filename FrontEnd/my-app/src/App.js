@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
+import Header from './components/header';
+import Panel from './components/panel';
 
 class App extends Component {
     state = {
@@ -16,8 +18,12 @@ class App extends Component {
 
     render() {
         return (
+
             <ul>
+                <Header/>
                 { this.state.persons.map(person => <li>{person.name}</li>)}
+                <Panel/>
+
             </ul>
 
         )

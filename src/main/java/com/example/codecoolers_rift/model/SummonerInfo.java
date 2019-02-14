@@ -5,7 +5,6 @@ import java.util.Map;
 
 import com.fasterxml.jackson.annotation.*;
 
-import javax.xml.bind.annotation.XmlRootElement;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -18,7 +17,6 @@ import javax.xml.bind.annotation.XmlRootElement;
         "revisionDate"
 })
 
-@XmlRootElement
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SummonerInfo {
 
@@ -62,5 +60,29 @@ public class SummonerInfo {
 
     public Integer getSummonerLevel() {
         return summonerLevel;
+    }
+
+    public Integer getProfileIconId() {
+        return profileIconId;
+    }
+
+    public String getPuuid() {
+        return puuid;
+    }
+
+    public String getAccountId() {
+        return accountId;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public Long getRevisionDate() {
+        return revisionDate;
+    }
+
+    public Map<String, Object> getAdditionalProperties() {
+        return additionalProperties;
     }
 }
