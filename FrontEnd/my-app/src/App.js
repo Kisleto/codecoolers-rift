@@ -1,48 +1,54 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
-import Header from './components/header';
-import Panel from './components/panel';
-import SearchField from "react-search-field";
-import { Route, NavLink, HashRouter } from "react-router-dom";
-import InfoPage from './InfoPage';
+import Button from 'react-bootstrap/Button';
+import InputGroup from 'react-bootstrap/InputGroup'
+import FormControl from 'react-bootstrap/FormControl'
+import Dropdown from 'react-bootstrap/Dropdown'
+import DropdownButton from 'react-bootstrap/DropdownButton'
 
 class App extends Component {
     state = {
-        persons: []
-    };
-    componentDidMount() {
-        axios.get(`http://localhost:8080`)
-            .then(res => {
-                const persons = res.data;
-                this.setState({ persons });
+        query: '',
+        results: []
+    }
+    handleInputChange = () => {
+        this.setState({
+            query: this.search.value
+        })
+    }
+
+    getInfo = () => {
+        axios.get((`http://localhost:8080/euw1/${this.state.query}`))
+            .then(({data}) =>{
+                this.setState({
+                    results: data.data
+                })
+                console.log(data)
             })
     }
 
     render() {
-        if (window.location.href === "http://localhost/#/info-page") {
-            return(
-            <HashRouter>
-                <div>
-                    <Route exact path="/info-page" component={InfoPage}/>
-                </div>
-            </HashRouter>
-            )} else {
         return (
-            <HashRouter>
-            <div>
-                <SearchField
-                    placeholder="Search..."
-                    //onChange={onChange}
-                    classNames="test-class"
-                />
-                <Route exact path='/info-page' component={InfoPage}/>
-            </div>
-            </HashRouter>
-
-        )}
+            <form>
+                <InputGroup className="mb-3">
+                    <FormControl
+                        placeholder="Recipient's username"
+                        aria-label="Recipient's username"
+                        aria-describedby="basic-addon2"
+                        ref={input => this.search = input}
+                        onChange={this.handleInputChange}
+                    />
+                    <InputGroup.Append>
+                        <Button
+                            variant="outline-secondary"
+                            onClick={this.getInfo}
+                        >Button</Button>
+                    </InputGroup.Append>
+                </InputGroup>
+            </form>
+        )
     }
-
 }
 
 export default App;
