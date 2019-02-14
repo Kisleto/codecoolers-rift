@@ -6,7 +6,7 @@ import java.util.Map;
 
 import com.fasterxml.jackson.annotation.*;
 
-import javax.xml.bind.annotation.XmlRootElement;
+
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -22,7 +22,6 @@ import javax.xml.bind.annotation.XmlRootElement;
         "teams"
 })
 
-@XmlRootElement
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MatchHistoryInfo{
         @JsonProperty("seasonId")
