@@ -24,6 +24,7 @@ class App extends Component {
         query: '',
         results: []
     }
+
     handleInputChange = () => {
         this.setState({
             query: this.search.value
