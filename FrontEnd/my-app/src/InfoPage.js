@@ -16,6 +16,7 @@ class InfoPage extends Component{
     }
 
     render() {
+        console.log(this.state.persons);
         return (
             <div>
             <Header/>

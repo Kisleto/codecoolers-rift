@@ -16,13 +16,21 @@ class Panel extends Component {
         super(props);
     }
 
+
     state = {
+        persons: [],
         match: []
     };
 
+    componentWillReceiveProps(props) {
+        console.log('JEEEEEEEEEEEEEEEEEEEEEE')
+        console.log(props);
+        this.setState((prevState) => ({persons: props.persons}));
+
+    }
+
     render() {
-        const {classes, persons} = this.props;
-        console.log(persons.match);
+        console.log(this.state.persons);
         /*let matchElement = document.getElementsByClassName("matchesData");
         for (let match of persons.matches) {
             let matchId = match.seasonId;
@@ -33,11 +41,11 @@ class Panel extends Component {
                         </tr>`;
             matchElement.innerHTML += div;
         }*/
-
+// className={this.props.classes.grid}
         return (
             <div>
-                <Grid size={7} margin="2 2 2 0">{persons.name}</Grid>
-                <Grid className={classes.grid} size={5} margin={2}>{persons.name} </Grid>
+                <Grid size={7} margin="2 2 2 0">{this.state.persons.name}</Grid>
+                <Grid size={5} margin={2}>{this.state.persons.name} </Grid>
 
                 <Grid className="Grid" margin={2}>
                     <table className="table table-bordered">
@@ -49,9 +57,12 @@ class Panel extends Component {
                         </thead>
                         <tbody className="matchesData">
                         <tr>
-                            <td>{persons.summonerLevel}</td>
+                            <ul>
+                            {this.state.persons.matches !== undefined &&
+                                <td>{Array.from(this.state.persons.matches).map((value, i) => <li key={i}>{value.gameMode}</li>)}</td>
+                            }
+                            </ul>
                         </tr>
-
                         </tbody>
 
                     </table>
