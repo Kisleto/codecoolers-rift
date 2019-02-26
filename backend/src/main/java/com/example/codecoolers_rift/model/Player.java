@@ -28,6 +28,7 @@ public class Player {
     @JsonProperty("summonerName")
     private String summonerName;
     @JsonProperty("matchHistoryUri")
+
     private String matchHistoryUri;
     @JsonProperty("platformId")
     private String platformId;
