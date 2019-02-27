@@ -18,6 +18,17 @@ const styles = theme => ({
         backgroundColor: "lightgrey",
         marginLeft: 18,
         boxShadow: `0px 0px 3px`,
+    },
+    level: {
+        right: 1
+    },
+    name: {
+        width: 190,
+        borderWidth: 1,
+        backgroundColor: "lightgrey",
+        marginLeft: 18,
+        boxShadow: `0px 0px 3px`,
+        marginTop: 10,
     }
 
 });
@@ -57,20 +68,16 @@ class Panel extends Component {
         }*/
         return (
             <div>
-                <Grid className={classes.box} size={7} margin={2}>{this.state.persons.name}</Grid>
-                <Grid className={classes.level} size={7} margin={2}> Level: {this.state.persons.summonerLevel} </Grid>
+                <Grid className={classes.name} size={7} margin={2}>{this.state.persons.name} <br/> {this.state.persons.summonerLevel}</Grid>
                 <div>
                     <div className={classes.box}>
                         <ul style={{ listStyleType: "none", paddingLeft: 4 }}>
-                        {this.state.persons.matches !== undefined &&
+                        {this.state.persons.ranks !== undefined &&
                         <div>
                             {Array.from(this.state.persons.ranks).map((value, i) => <li
-                                key={i}>{value.queueType}</li>)}
+                                key={i}>{value.queueType} <br/> {value.tier}</li>)}
                         </div>
-                        }{this.state.persons.matches !== undefined &&
-                    <div>{Array.from(this.state.persons.ranks).map((value, i) => <li
-                        key={i}>{value.tier}</li>)}</div>
-                    }
+                        }
                         </ul>
                     </div>
                 </div>
