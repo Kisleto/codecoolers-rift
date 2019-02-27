@@ -29,8 +29,14 @@ const styles = theme => ({
         marginLeft: 18,
         boxShadow: `0px 0px 3px`,
         marginTop: 10,
-    }
-
+    },
+    avatar: {
+        display: "block",
+        maxWidth: 100,
+        maxHeight: 100,
+        width: "auto",
+        height: "auto",
+    },
 });
 
 
@@ -68,6 +74,10 @@ class Panel extends Component {
         }*/
         return (
             <div>
+                <img className={classes.avatar}
+                    src={`http://avatar.leagueoflegends.com/euw/${this.props.persons.name}.png`}
+                    alt="new"
+                />
                 <Grid className={classes.name} size={7} margin={2}>{this.state.persons.name} <br/> {this.state.persons.summonerLevel}</Grid>
                 <div>
                     <div className={classes.box}>
