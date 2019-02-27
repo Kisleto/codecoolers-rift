@@ -4,25 +4,26 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.fasterxml.jackson.annotation.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Transient;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-        "championLevel",
-        "chestGranted",
-        "championPoints",
-        "championPointsSinceLastLevel",
-        "championPointsUntilNextLevel",
-        "summonerId",
-        "tokensEarned",
-        "championId",
-        "lastPlayTime"
-})
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Builder
 public class ChampionMastery {
 
-    ChampionMastery(){}
-
-    public ChampionMastery(long championLevel, boolean chestGranted, long championPoints, long championPointsSinceLastLevel, long championPointsUntilNextLevel, String summonerId, long tokensEarned, long championId, long lastPlayTime, Map<String, Object> additionalProperties) {
+    public ChampionMastery(long championLevel, boolean chestGranted, long championPoints, long championPointsSinceLastLevel, long championPointsUntilNextLevel, String summonerId, long tokensEarned, long championId, long lastPlayTime) {
         this.championLevel = championLevel;
         this.chestGranted = chestGranted;
         this.championPoints = championPoints;
@@ -32,8 +33,11 @@ public class ChampionMastery {
         this.tokensEarned = tokensEarned;
         this.championId = championId;
         this.lastPlayTime = lastPlayTime;
-        this.additionalProperties = additionalProperties;
     }
+
+    @Id
+    @GeneratedValue
+    private Long id;
 
     @JsonProperty("championLevel")
     private long championLevel;
@@ -51,10 +55,11 @@ public class ChampionMastery {
     private long tokensEarned;
     @JsonProperty("championId")
     private long championId;
+    @JsonIgnore
+    @Transient
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
     @JsonProperty("lastPlayTime")
     private long lastPlayTime;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("championLevel")
     public long getChampionLevel() {
