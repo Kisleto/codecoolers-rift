@@ -2,11 +2,23 @@ import React, {Component} from 'react';
 import './App.css';
 import axios from 'axios';
 import SearchField from "react-search-field";
+import Header from "./components/header";
 import {Route, HashRouter} from "react-router-dom";
 import InfoPage from './InfoPage';
 import {withStyles} from "@material-ui/core";
 import PropTypes from "prop-types";
 
+/*  <HashRouter>
+                    <div>
+                        <SearchField
+                            placeholder="Search..."
+                            //onChange={onChange}
+                            classNames={classes.searchField}
+                        />
+                        <Route exact path='/info-page' component={InfoPage}/>
+                    </div>
+                </HashRouter>
+                */
 
 const styles = theme => ({
     formLine: {
@@ -23,23 +35,23 @@ class App extends Component {
     state = {
         query: '',
         results: []
-    }
+    };
 
     handleInputChange = () => {
         this.setState({
             query: this.search.value
         })
-    }
+    };
 
     getInfo = () => {
         axios.get((`http://localhost:8080/euw1/${this.state.query}`))
             .then(({data}) =>{
                 this.setState({
                     results: data.data
-                })
+                });
                 console.log(data)
             })
-    }
+    };
 
     render() {
         const { classes } = this.props;
@@ -55,11 +67,7 @@ class App extends Component {
             return (
                 <HashRouter>
                     <div>
-                        <SearchField
-                            placeholder="Search..."
-                            //onChange={onChange}
-                            classNames={classes.searchField}
-                        />
+                        <Header/>
                         <Route exact path='/info-page' component={InfoPage}/>
                     </div>
                 </HashRouter>
