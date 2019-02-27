@@ -36,6 +36,7 @@ const styles = theme => ({
         maxHeight: 100,
         width: "auto",
         height: "auto",
+        float: "left"
     },
 });
 
@@ -74,11 +75,14 @@ class Panel extends Component {
         }*/
         return (
             <div>
-                <img className={classes.avatar}
-                    src={`http://avatar.leagueoflegends.com/euw/${this.props.persons.name}.png`}
-                    alt="new"
-                />
-                <Grid className={classes.name} size={7} margin={2}>{this.state.persons.name} <br/> {this.state.persons.summonerLevel}</Grid>
+
+                <Grid className={classes.name} size={7} margin={2}>
+                    <img className={classes.avatar}
+                         src={`http://avatar.leagueoflegends.com/euw/${this.props.persons.name}.png`}
+                         alt="new"
+                    />
+                    {this.state.persons.name} <br/> {this.state.persons.summonerLevel}
+                </Grid>
                 <div>
                     <div className={classes.box}>
                         <ul style={{ listStyleType: "none", paddingLeft: 4 }}>
