@@ -15,7 +15,7 @@ const styles = theme => ({
     box: {
         width: 190,
         borderWidth: 1,
-        backgroundColor: "lightgrey",
+        backgroundColor: "white",
         marginLeft: 18,
         boxShadow: `0px 0px 3px`,
     },
@@ -25,7 +25,7 @@ const styles = theme => ({
     name: {
         width: 190,
         borderWidth: 1,
-        backgroundColor: "lightgrey",
+        backgroundColor: "#f2f2f2",
         marginLeft: 18,
         boxShadow: `0px 0px 3px`,
         marginTop: 10,
