@@ -6,9 +6,20 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: lightgoldenrodyellow;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+ul.menu li a:before, ul.menu li .item:before, ul.menu li .separator:before {
+  content: "\2022";
+  font-family: FontAwesome;
+  margin-right: 10px;
+  display: inline;
+  vertical-align: middle;
+  font-size: 1.6em;
+  font-weight: normal;
 }
