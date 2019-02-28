@@ -32,6 +32,16 @@ class DetailedExpansionPanel extends Component {
         this.setState({data: event.target.value});
     }
 
+    handleSubmit(event) {
+        event.preventDefault();
+        axios.get(`http://localhost:8080/euw1/${this.state.data}`)
+            .then(res => {
+                const persons = res.data;
+                this.setState({persons});
+
+            });
+    }
+
     render() {
         return (
             <div>
@@ -56,7 +66,7 @@ class DetailedExpansionPanel extends Component {
                     </form>
                 </Navbar>
                 <div>
-                    <InfoPage persons={this.state.persons}/>
+                    <InfoPage people={this.state.persons}/>
                 </div>
             </div>
 
@@ -65,15 +75,6 @@ class DetailedExpansionPanel extends Component {
     }
 
 
-    handleSubmit(event) {
-        event.preventDefault();
-        axios.get(`http://localhost:8080/euw1/${this.state.data}`)
-            .then(res => {
-                const persons = res.data;
-                this.setState({persons});
-
-            });
-    }
 
 }
 

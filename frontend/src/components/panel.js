@@ -51,17 +51,15 @@ class Panel extends Component {
     };
 
     componentWillReceiveProps(props) {
-        console.log("EZ A PANELE");
-        console.log(props);
-        console.log("=================");
-        this.setState((prevState) => ({persons: props.persons}));
-
+        this.setState((prevState) => ({persons: props.peeps}));
+        console.log(this.state.persons);
     }
+
 
     render() {
         const {classes} = this.props;
-        return (
 
+        return (
             <div>
                 <Grid className={classes.name} size={7} margin={2}>
                     <img className={classes.avatar}
@@ -75,7 +73,7 @@ class Panel extends Component {
                         <ul style={{listStyleType: "none", paddingLeft: 4}}>
                             {this.state.persons.ranks !== undefined &&
                             <div>
-                                {Array.from(this.state.persons.ranks).map((value, i) => <li
+                                {Array.from(this.state.persons.persons.ranks).map((value, i) => <li
                                     key={i}>{value.queueType} <br/> {value.tier}</li>)}
                             </div>
                             }

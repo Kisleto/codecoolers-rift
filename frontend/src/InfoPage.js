@@ -3,7 +3,7 @@ import React, {Component} from "react";
 
 class InfoPage extends Component {
     state = {
-        persons: [],
+        people: [],
         name: ""
     };
 
@@ -15,7 +15,7 @@ class InfoPage extends Component {
 
 
     componentWillReceiveProps(props) {
-        this.setState({persons: props});
+        this.setState({people: props});
         console.log("__________________________________");
         console.log(props)
     }
@@ -23,7 +23,7 @@ class InfoPage extends Component {
     render() {
         return (
             <div>
-                <Panel persons={this.state.persons}/>
+                <Panel peeps={this.state.people}/>
             </div>
         )
     }

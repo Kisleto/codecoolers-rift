@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import './App.css';
-import axios from 'axios';
 import Header from "./components/header";
 import {HashRouter} from "react-router-dom";
 import {withStyles} from "@material-ui/core";
@@ -30,38 +29,12 @@ const styles = theme => ({
 });
 
 class App extends Component {
-    state = {
-        query: '',
-        results: []
-    };
 
-    handleInputChange = () => {
-        this.setState({
-            query: this.search.value
-        })
-    };
-
-    getInfo = () => {
-        axios.get((`http://localhost:8080/euw1/${this.state.query}`))
-            .then(({data}) =>{
-                    this.setState({
-                        results: data.data
-                    });
-                console.log(data)
-            })
-    };
 
     render() {
         const { classes } = this.props;
-        if (window.location.href === "http://localhost/#/info-page") {
-            return (
-                <HashRouter>
-                    <div>
-                    </div>
-                </HashRouter>
-            )
-        } else {
-            return (
+
+        return (
                 <HashRouter>
                     <div>
                         <Header/>
@@ -70,7 +43,7 @@ class App extends Component {
 
             )
         }
-    }
+
 }
 
 App.propTypes = {
