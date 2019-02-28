@@ -9,13 +9,23 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Entity
 public class Stats {
+
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private SummonerStats summonerStats;
 
     @JsonProperty("participantId")
     public Integer participantId;
