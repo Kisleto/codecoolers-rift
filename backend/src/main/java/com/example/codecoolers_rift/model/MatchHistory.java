@@ -9,10 +9,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Transient;
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -26,12 +24,22 @@ import java.util.List;
 @AllArgsConstructor
 public class MatchHistory {
 
-
-    @Id
-    @GeneratedValue
-    private Long id;
     @JsonProperty("matches")
-    public List<Integer> matches;
+    public List<Match> matches;
+    @JsonProperty("startIndex")
+    public Integer startIndex;
+    @JsonProperty("endIndex")
+    public Integer endIndex;
+    @JsonProperty("totalGames")
+    public Integer totalGames;
 
+
+    public List<Long> getMatchids(){
+        List<Long> matchIds = new ArrayList<>();
+        for (Match match: matches){
+            matchIds.add(match.getGameId());
+        }
+        return matchIds;
+    }
 
 }

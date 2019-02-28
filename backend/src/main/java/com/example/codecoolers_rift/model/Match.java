@@ -35,13 +35,13 @@ public class Match {
     @JsonProperty("lane")
     public String lane;
     @JsonProperty("gameId")
-    public Integer gameId;
+    public Long gameId;
     @JsonProperty("champion")
     public Integer champion;
     @JsonProperty("platformId")
     public String platformId;
     @JsonProperty("timestamp")
-    public Integer timestamp;
+    public Long timestamp;
     @JsonProperty("queue")
     public Integer queue;
     @JsonProperty("role")

@@ -19,21 +19,18 @@ public class SummonerService {
     private ChampionMastery championMastery;
     private SummonerInfo summonerInfo;
     private Summoner summoner;
+    @Autowired
+    private MatchHistoryService matchHistoryService;
 
     public Summoner getSummoner(String region, String name){
-
-        /*if (championMasteryRepository.existsBySummonerId()) {
-            System.out.println("Already exist");
-        } else {
-            saveToDatabase();
-        }*/
-
         summonerInfo = summonerRequest.callRestAPI(region, name);
         LeagueRank[] leagueRank = summonerRequest.callRankRestAPI(region, summonerInfo.getId());
         ChampionMastery[] championMasteries = summonerRequest.callCMRestApi(region, summonerInfo.getId());
         fillSummonerData();
         fillRankData(summoner, leagueRank);
         fillMasteryData(summoner, championMasteries);
+        summoner.setMatchids(summonerRequest.callMatchHistory(region, summonerInfo.getAccountId()).getMatchids());
+        summoner.setLastGameInfo(matchHistoryService.fillLastGameInfo(region, summoner.getMatchids().get(0)));
         return summoner;
     }
 
@@ -51,6 +48,7 @@ public class SummonerService {
 
     }
 
+
     private void fillSummonerData(){
         summoner = new Summoner();
         summoner.setName(summonerInfo.getName());
@@ -61,8 +59,8 @@ public class SummonerService {
 
     private void fillRankData(Summoner summoner, LeagueRank[] leagueRanks){
         summoner.setSummonerRank(summoner.addtoLeaguerank(leagueRanks));
-
     }
+
 
     //Ez kell nekem (Peti)
     private void fillMasteryData(Summoner summoner, ChampionMastery[] championMasteries){
