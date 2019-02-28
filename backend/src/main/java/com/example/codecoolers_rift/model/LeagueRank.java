@@ -8,6 +8,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -27,7 +35,18 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "summonerId",
         "leaguePoints"
 })
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
 public class LeagueRank {
+
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    @ManyToOne
+    private Summoner summoner;
 
     @JsonProperty("tier")
     private String tier;
@@ -59,167 +78,5 @@ public class LeagueRank {
     private String summonerId;
     @JsonProperty("leaguePoints")
     private Integer leaguePoints;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
-    @JsonProperty("tier")
-    public String getTier() {
-        return tier;
-    }
-
-    @JsonProperty("tier")
-    public void setTier(String tier) {
-        this.tier = tier;
-    }
-
-    @JsonProperty("summonerName")
-    public String getSummonerName() {
-        return summonerName;
-    }
-
-    @JsonProperty("summonerName")
-    public void setSummonerName(String summonerName) {
-        this.summonerName = summonerName;
-    }
-
-    @JsonProperty("hotStreak")
-    public Boolean getHotStreak() {
-        return hotStreak;
-    }
-
-    @JsonProperty("hotStreak")
-    public void setHotStreak(Boolean hotStreak) {
-        this.hotStreak = hotStreak;
-    }
-
-    @JsonProperty("wins")
-    public Integer getWins() {
-        return wins;
-    }
-
-    @JsonProperty("wins")
-    public void setWins(Integer wins) {
-        this.wins = wins;
-    }
-
-    @JsonProperty("veteran")
-    public Boolean getVeteran() {
-        return veteran;
-    }
-
-    @JsonProperty("veteran")
-    public void setVeteran(Boolean veteran) {
-        this.veteran = veteran;
-    }
-
-    @JsonProperty("losses")
-    public Integer getLosses() {
-        return losses;
-    }
-
-    @JsonProperty("losses")
-    public void setLosses(Integer losses) {
-        this.losses = losses;
-    }
-
-    @JsonProperty("rank")
-    public String getRank() {
-        return rank;
-    }
-
-    @JsonProperty("rank")
-    public void setRank(String rank) {
-        this.rank = rank;
-    }
-
-    @JsonProperty("leagueName")
-    public String getLeagueName() {
-        return leagueName;
-    }
-
-    @JsonProperty("leagueName")
-    public void setLeagueName(String leagueName) {
-        this.leagueName = leagueName;
-    }
-
-    @JsonProperty("inactive")
-    public Boolean getInactive() {
-        return inactive;
-    }
-
-    @JsonProperty("inactive")
-    public void setInactive(Boolean inactive) {
-        this.inactive = inactive;
-    }
-
-    @JsonProperty("freshBlood")
-    public Boolean getFreshBlood() {
-        return freshBlood;
-    }
-
-    @JsonProperty("freshBlood")
-    public void setFreshBlood(Boolean freshBlood) {
-        this.freshBlood = freshBlood;
-    }
-
-    @JsonProperty("position")
-    public String getPosition() {
-        return position;
-    }
-
-    @JsonProperty("position")
-    public void setPosition(String position) {
-        this.position = position;
-    }
-
-    @JsonProperty("leagueId")
-    public String getLeagueId() {
-        return leagueId;
-    }
-
-    @JsonProperty("leagueId")
-    public void setLeagueId(String leagueId) {
-        this.leagueId = leagueId;
-    }
-
-    @JsonProperty("queueType")
-    public String getQueueType() {
-        return queueType;
-    }
-
-    @JsonProperty("queueType")
-    public void setQueueType(String queueType) {
-        this.queueType = queueType;
-    }
-
-    @JsonProperty("summonerId")
-    public String getSummonerId() {
-        return summonerId;
-    }
-
-    @JsonProperty("summonerId")
-    public void setSummonerId(String summonerId) {
-        this.summonerId = summonerId;
-    }
-
-    @JsonProperty("leaguePoints")
-    public Integer getLeaguePoints() {
-        return leaguePoints;
-    }
-
-    @JsonProperty("leaguePoints")
-    public void setLeaguePoints(Integer leaguePoints) {
-        this.leaguePoints = leaguePoints;
-    }
-
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
 
 }
