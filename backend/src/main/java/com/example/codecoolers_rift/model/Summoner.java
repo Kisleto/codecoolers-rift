@@ -40,7 +40,7 @@ public class Summoner {
     @ElementCollection
     private List<Long> matchids = new ArrayList<>();
 
-    @Transient
+    @OneToOne(cascade = CascadeType.ALL)
     private LastGameInfo lastGameInfo;
 
     public List<LeagueRank> addtoLeaguerank(LeagueRank[] leagueRanks){
