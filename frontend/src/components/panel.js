@@ -108,7 +108,7 @@ class Panel extends Component {
                                 </tr>
                                 </thead>
                                 <tbody className="matchesData">
-                                <tr>
+                                <tr style={{listStyleType: "none"}}>
                                     {this.state.persons.mastery_level !== undefined &&
                                     <td>{Array.from(this.state.persons.mastery_level).map((value, i) => <li
                                         key={i}>{value.championLevel}</li>)}</td>
