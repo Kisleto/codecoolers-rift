@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import {Grid} from 'gymnast'
-import Rank from "./Rank";
-import axios from "axios";
 import './components.css'
 import '../index.css'
 
@@ -74,8 +72,8 @@ class Panel extends Component {
             matchElement.innerHTML += div;
         }*/
         return (
-            <div>
 
+            <div>
                 <Grid className={classes.name} size={7} margin={2}>
                     <img className={classes.avatar}
                          src={`http://avatar.leagueoflegends.com/euw/${this.props.persons.name}.png`}

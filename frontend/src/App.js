@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
 import './App.css';
 import axios from 'axios';
-import SearchField from "react-search-field";
 import Header from "./components/header";
-import {Route, HashRouter} from "react-router-dom";
-import InfoPage from './InfoPage';
+import {HashRouter} from "react-router-dom";
 import {withStyles} from "@material-ui/core";
 import PropTypes from "prop-types";
 
@@ -59,7 +57,6 @@ class App extends Component {
             return (
                 <HashRouter>
                     <div>
-                        <Route exact path="/info-page" component={InfoPage}/>
                     </div>
                 </HashRouter>
             )
@@ -68,7 +65,6 @@ class App extends Component {
                 <HashRouter>
                     <div>
                         <Header/>
-                        <Route exact path='/info-page' component={InfoPage}/>
                     </div>
                 </HashRouter>
 

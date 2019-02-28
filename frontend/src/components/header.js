@@ -3,10 +3,9 @@ import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import {Navbar} from 'react-bootstrap';
 import Nav from "react-bootstrap/Nav";
-import Form from "react-bootstrap/Form";
 import Button from "@material-ui/core/Button/Button";
-import SearchField from "react-search-field";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import InfoPage from "../InfoPage";
 
 
 const styles = theme => ({
@@ -26,32 +25,40 @@ class DetailedExpansionPanel extends Component {
         }
     }
 
+
     handleSummonerNameChange(event) {
-        this.setState({data: event.target.value})
+        this.setState({data: event.target.value});
     }
 
     render() {
         return (
-            <Navbar bg="dark" variant="dark">
-                <Navbar.Brand href="#home">Codecoolers Rift</Navbar.Brand>
-                <Nav className="mr-auto">
-                    <Nav.Link href="#home">Home</Nav.Link>
-                    <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                        <NavDropdown.Item href="#action/3.1">NA</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.2">EUNE</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                    </NavDropdown>
-                </Nav>
-                <Form onSubmit={this.handleSubmit} type='post' inline>
-                    <SearchField value={this.state.data}
-                                 placeholder="Search..."
-                        //onChange={onChange}
-                                 classNames="searchField"
-                    />
-                    <Button variant="outline-info" type='submit'>Search</Button>
-                </Form>
-            </Navbar>
+            <div>
+                <Navbar bg="dark" variant="dark">
+                    <Navbar.Brand href="#home">Codecoolers Rift</Navbar.Brand>
+                    <Nav className="mr-auto">
+                        <Nav.Link href="#home">Home</Nav.Link>
+                        <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+                            <NavDropdown.Item href="#action/3.1">NA</NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.2">EUNE</NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                        </NavDropdown>
+                    </Nav>
+                    <form onSubmit={this.handleSubmit}>
+                        <input value={this.state.data} onChange={event => this.handleSummonerNameChange(event)}
+                               placeholder="Search..."
+                            //onChange={onChange}
+                               classNames="searchField"
+                        />
+                        <Button variant="outline-info" type='submit'>Search</Button>
+                    </form>
+                </Navbar>
+                <div>
+                    <InfoPage data={this.state.data}/>
+                </div>
+            </div>
+
+
         );
     }
 
@@ -66,10 +73,8 @@ class DetailedExpansionPanel extends Component {
             .then(function (myJson) {
                 console.log(JSON.stringify(myJson));
             });
-        this.setState({data: event.target.value});
-        console.log("===========================");
-        console.log(this.state.data)
     }
+
 }
 
 
