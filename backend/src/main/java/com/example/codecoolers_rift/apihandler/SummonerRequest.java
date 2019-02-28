@@ -2,6 +2,7 @@ package com.example.codecoolers_rift.apihandler;
 
 import com.example.codecoolers_rift.model.*;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.client.RestTemplate;
 
 import javax.validation.constraints.Size;
@@ -10,10 +11,11 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Component
+@CrossOrigin
 public class SummonerRequest {
 
 
-    private static String key = "RGAPI-559dc065-b11e-447c-899a-fb12094c43b8";
+    private static String key = "RGAPI-f017da10-509d-4573-acd0-81d845a54a53";
 
 
 

@@ -5,11 +5,13 @@ import com.example.codecoolers_rift.model.*;
 import com.fasterxml.jackson.databind.deser.DataFormatReaders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
 
 @Service
+@CrossOrigin
 public class SummonerService {
 
     @Autowired

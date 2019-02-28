@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import { Navbar } from 'react-bootstrap';
+import {withStyles} from '@material-ui/core/styles';
+import {Navbar} from 'react-bootstrap';
 import Nav from "react-bootstrap/Nav";
 import Form from "react-bootstrap/Form";
 import Button from "@material-ui/core/Button/Button";
@@ -11,19 +11,39 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 
 const styles = theme => ({
     formLine: {
-        backgroundColor : "blue",
+        backgroundColor: "blue",
     },
-    searchField : {
-
-
-    }
+    searchField: {}
 
 });
 
-function DetailedExpansionPanel(props) {
+class DetailedExpansionPanel extends Component {
+    constructor(props) {
+        super(props);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.state = {
+            data: ""
+        }
+    }
 
-    const { classes } = props;
-    return (
+    handleSummonerNameChange(event) {
+        this.setState({data: event.target.value})
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        fetch(`http://localhost:8080/euw1/${event.target.value}`)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (myJson) {
+                console.log(JSON.stringify(myJson));
+            });
+    }
+
+
+    render() {
+        return (
             <Navbar bg="dark" variant="dark">
                 <Navbar.Brand href="#home">Codecoolers Rift</Navbar.Brand>
                 <Nav className="mr-auto">
@@ -35,20 +55,22 @@ function DetailedExpansionPanel(props) {
                         <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                     </NavDropdown>
                 </Nav>
-                <Form inline>
-                    <SearchField
-                        placeholder="Search..."
+                <Form onSubmit={this.handleSubmit} type='post' inline>
+                    <SearchField value={this.state.data}
+                                 placeholder="Search..."
                         //onChange={onChange}
-                        classNames="searchField"
+                                 classNames="searchField"
                     />
-                    <Button variant="outline-info">Search</Button>
+                    <Button variant="outline-info" type='submit'>Search</Button>
                 </Form>
             </Navbar>
-    );
+        );
+    }
 }
+
 
 DetailedExpansionPanel.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles) (DetailedExpansionPanel);
+export default withStyles(styles)(DetailedExpansionPanel);

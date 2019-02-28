@@ -46,9 +46,9 @@ class App extends Component {
     getInfo = () => {
         axios.get((`http://localhost:8080/euw1/${this.state.query}`))
             .then(({data}) =>{
-                this.setState({
-                    results: data.data
-                });
+                    this.setState({
+                        results: data.data
+                    });
                 console.log(data)
             })
     };
