@@ -9,161 +9,51 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Transient;
+import javax.persistence.*;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-
+@JsonPropertyOrder({
+        "championLevel",
+        "chestGranted",
+        "championPoints",
+        "championPointsSinceLastLevel",
+        "championPointsUntilNextLevel",
+        "summonerId",
+        "tokensEarned",
+        "championId",
+        "lastPlayTime"
+})
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-@Entity
+@AllArgsConstructor
 @Builder
+@Entity
 public class ChampionMastery {
-
-    public ChampionMastery(long championLevel, boolean chestGranted, long championPoints, long championPointsSinceLastLevel, long championPointsUntilNextLevel, String summonerId, long tokensEarned, long championId, long lastPlayTime) {
-        this.championLevel = championLevel;
-        this.chestGranted = chestGranted;
-        this.championPoints = championPoints;
-        this.championPointsSinceLastLevel = championPointsSinceLastLevel;
-        this.championPointsUntilNextLevel = championPointsUntilNextLevel;
-        this.summonerId = summonerId;
-        this.tokensEarned = tokensEarned;
-        this.championId = championId;
-        this.lastPlayTime = lastPlayTime;
-    }
 
     @Id
     @GeneratedValue
     private Long id;
 
+    @ManyToOne
+    private Summoner summoner;
+
     @JsonProperty("championLevel")
     private long championLevel;
-    @Transient
     @JsonProperty("chestGranted")
     private boolean chestGranted;
     @JsonProperty("championPoints")
     private long championPoints;
-    @Transient
     @JsonProperty("championPointsSinceLastLevel")
     private long championPointsSinceLastLevel;
-    @Transient
     @JsonProperty("championPointsUntilNextLevel")
     private long championPointsUntilNextLevel;
     @JsonProperty("summonerId")
     private String summonerId;
-    @Transient
     @JsonProperty("tokensEarned")
     private long tokensEarned;
     @JsonProperty("championId")
     private long championId;
-    @JsonIgnore
-    @Transient
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    @Transient
     @JsonProperty("lastPlayTime")
     private long lastPlayTime;
-
-    @JsonProperty("championLevel")
-    public long getChampionLevel() {
-        return championLevel;
-    }
-
-    @JsonProperty("championLevel")
-    public void setChampionLevel(long championLevel) {
-        this.championLevel = championLevel;
-    }
-
-    @JsonProperty("chestGranted")
-    public boolean isChestGranted() {
-        return chestGranted;
-    }
-
-    @JsonProperty("chestGranted")
-    public void setChestGranted(boolean chestGranted) {
-        this.chestGranted = chestGranted;
-    }
-
-    @JsonProperty("championPoints")
-    public long getChampionPoints() {
-        return championPoints;
-    }
-
-    @JsonProperty("championPoints")
-    public void setChampionPoints(long championPoints) {
-        this.championPoints = championPoints;
-    }
-
-    @JsonProperty("championPointsSinceLastLevel")
-    public long getChampionPointsSinceLastLevel() {
-        return championPointsSinceLastLevel;
-    }
-
-    @JsonProperty("championPointsSinceLastLevel")
-    public void setChampionPointsSinceLastLevel(long championPointsSinceLastLevel) {
-        this.championPointsSinceLastLevel = championPointsSinceLastLevel;
-    }
-
-    @JsonProperty("championPointsUntilNextLevel")
-    public long getChampionPointsUntilNextLevel() {
-        return championPointsUntilNextLevel;
-    }
-
-    @JsonProperty("championPointsUntilNextLevel")
-    public void setChampionPointsUntilNextLevel(long championPointsUntilNextLevel) {
-        this.championPointsUntilNextLevel = championPointsUntilNextLevel;
-    }
-
-    @JsonProperty("summonerId")
-    public String getSummonerId() {
-        return summonerId;
-    }
-
-    @JsonProperty("summonerId")
-    public void setSummonerId(String summonerId) {
-        this.summonerId = summonerId;
-    }
-
-    @JsonProperty("tokensEarned")
-    public long getTokensEarned() {
-        return tokensEarned;
-    }
-
-    @JsonProperty("tokensEarned")
-    public void setTokensEarned(long tokensEarned) {
-        this.tokensEarned = tokensEarned;
-    }
-
-    @JsonProperty("championId")
-    public long getChampionId() {
-        return championId;
-    }
-
-    @JsonProperty("championId")
-    public void setChampionId(long championId) {
-        this.championId = championId;
-    }
-
-    @JsonProperty("lastPlayTime")
-    public long getLastPlayTime() {
-        return lastPlayTime;
-    }
-
-    @JsonProperty("lastPlayTime")
-    public void setLastPlayTime(long lastPlayTime) {
-        this.lastPlayTime = lastPlayTime;
-    }
-
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
 
 }

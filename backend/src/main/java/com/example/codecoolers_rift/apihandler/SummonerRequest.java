@@ -12,8 +12,9 @@ import java.util.List;
 @Component
 public class SummonerRequest {
 
+  
+    private static String key = "RGAPI-315359ee-8024-4c09-b623-705dbaea1034";
 
-    private static String key = "RGAPI-f017da10-509d-4573-acd0-81d845a54a53";
 
 
 
