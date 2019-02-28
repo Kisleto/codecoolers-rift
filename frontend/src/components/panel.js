@@ -60,36 +60,25 @@ class Panel extends Component {
 
     render() {
         const {classes} = this.props;
-        console.log(this.state.persons);
-        /*let matchElement = document.getElementsByClassName("matchesData");
-        for (let match of persons.matches) {
-            let matchId = match.seasonId;
-            let currentPlatformId = match.participantIdentities.currentPlatformId;
-            let div = `<tr>
-                        <td>${matchId}</td>
-                        <td>${currentPlatformId}</td>
-                        </tr>`;
-            matchElement.innerHTML += div;
-        }*/
         return (
 
             <div>
                 <Grid className={classes.name} size={7} margin={2}>
                     <img className={classes.avatar}
-                         src={`http://avatar.leagueoflegends.com/euw/${this.props.persons.name}.png`}
+                         src={`http://avatar.leagueoflegends.com/euw/${this.state.persons.name}.png`}
                          alt="new"
                     />
                     {this.state.persons.name} <br/> {this.state.persons.summonerLevel}
                 </Grid>
                 <div>
                     <div className={classes.box}>
-                        <ul style={{ listStyleType: "none", paddingLeft: 4 }}>
-                        {this.state.persons.ranks !== undefined &&
-                        <div>
-                            {Array.from(this.state.persons.ranks).map((value, i) => <li
-                                key={i}>{value.queueType} <br/> {value.tier}</li>)}
-                        </div>
-                        }
+                        <ul style={{listStyleType: "none", paddingLeft: 4}}>
+                            {this.state.persons.ranks !== undefined &&
+                            <div>
+                                {Array.from(this.state.persons.ranks).map((value, i) => <li
+                                    key={i}>{value.queueType} <br/> {value.tier}</li>)}
+                            </div>
+                            }
                         </ul>
                     </div>
                 </div>
@@ -103,10 +92,11 @@ class Panel extends Component {
                         </thead>
                         <tbody className="matchesData">
                         <tr>
-                            <ul style={{ listStyleType: "none", paddingLeft: 0}}>
-                            {this.state.persons.matches !== undefined &&
-                                <td>{Array.from(this.state.persons.matches).map((value, i) => <li key={i}>{value.gameId}</li>)}</td>
-                            }
+                            <ul style={{listStyleType: "none", paddingLeft: 0}}>
+                                {this.state.persons.matches !== undefined &&
+                                <td>{Array.from(this.state.persons.matches).map((value, i) => <li
+                                    key={i}>{value.gameId}</li>)}</td>
+                                }
                             </ul>
                         </tr>
                         </tbody>

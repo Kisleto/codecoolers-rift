@@ -1,6 +1,5 @@
 import Panel from "./components/panel";
 import React, {Component} from "react";
-import axios from "axios";
 
 class InfoPage extends Component {
     state = {
@@ -12,20 +11,13 @@ class InfoPage extends Component {
         super(props);
     }
 
-    componentDidMount() {
-        axios.get(`http://localhost:8080/euw1/${this.state.name}`)
-            .then(res => {
-                const persons = res.data;
-                this.setState({persons});
 
-            });
-    }
 
 
     componentWillReceiveProps(props) {
-        this.setState({name: props});
+        this.setState({persons: props});
         console.log("__________________________________");
-        console.log(this.state.name)
+        console.log(props)
     }
 
     render() {

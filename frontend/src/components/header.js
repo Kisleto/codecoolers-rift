@@ -6,6 +6,7 @@ import Nav from "react-bootstrap/Nav";
 import Button from "@material-ui/core/Button/Button";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import InfoPage from "../InfoPage";
+import axios from "axios";
 
 
 const styles = theme => ({
@@ -21,6 +22,7 @@ class DetailedExpansionPanel extends Component {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.state = {
+            persons: [],
             data: ""
         }
     }
@@ -54,7 +56,7 @@ class DetailedExpansionPanel extends Component {
                     </form>
                 </Navbar>
                 <div>
-                    <InfoPage data={this.state.data}/>
+                    <InfoPage persons={this.state.persons}/>
                 </div>
             </div>
 
@@ -65,13 +67,11 @@ class DetailedExpansionPanel extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        fetch(`http://localhost:8080/euw1/${event.target.value}`)
-            .then(function (response) {
-                return response.json();
-            })
+        axios.get(`http://localhost:8080/euw1/${this.state.data}`)
+            .then(res => {
+                const persons = res.data;
+                this.setState({persons});
 
-            .then(function (myJson) {
-                console.log(JSON.stringify(myJson));
             });
     }
 
