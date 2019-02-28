@@ -5,7 +5,11 @@ import java.util.List;
 import java.util.Map;
 
 import com.fasterxml.jackson.annotation.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -21,15 +25,27 @@ import com.fasterxml.jackson.annotation.*;
         "gameType",
         "teams"
 })
-
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MatchHistoryInfo{
+
+        @Id
+        @GeneratedValue
+        private Long id;
+
+        @ManyToOne
+        private Summoner summoner;
+
         @JsonProperty("seasonId")
         private int seasonId;
         @JsonProperty("queueId")
         private int queueId;
         @JsonProperty("gameId")
         private Long gameId;
+        @OneToMany(cascade = {CascadeType.ALL})
         @JsonProperty("participantIdentities")
         private List<ParticipantIdentity> participantIdentities = new ArrayList<ParticipantIdentity>();
         @JsonProperty("gameVersion")
@@ -42,110 +58,10 @@ public class MatchHistoryInfo{
         private Integer mapId;
         @JsonProperty("gameType")
         private String gameType;
+
         @JsonProperty("teams")
+        @OneToMany(cascade = {CascadeType.ALL})
         private List<Team> teams = new ArrayList<Team>();
-        @JsonIgnore
-        private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
-        @JsonProperty("seasonId")
-        public Integer getSeasonId() {
-            return seasonId;
-        }
-
-        @JsonProperty("seasonId")
-        public void setSeasonId(Integer seasonId) {
-            this.seasonId = seasonId;
-        }
-
-        @JsonProperty("queueId")
-        public Integer getQueueId() {
-            return queueId;
-        }
-
-        @JsonProperty("queueId")
-        public void setQueueId(Integer queueId) {
-            this.queueId = queueId;
-        }
-
-        @JsonProperty("participantIdentities")
-        public List<ParticipantIdentity> getParticipantIdentities() {
-            return participantIdentities;
-        }
-
-        @JsonProperty("participantIdentities")
-        public void setParticipantIdentities(List<ParticipantIdentity> participantIdentities) {
-            this.participantIdentities = participantIdentities;
-        }
-
-        @JsonProperty("gameVersion")
-        public String getGameVersion() {
-            return gameVersion;
-        }
-
-        @JsonProperty("gameVersion")
-        public void setGameVersion(String gameVersion) {
-            this.gameVersion = gameVersion;
-        }
-
-        @JsonProperty("platformId")
-        public String getPlatformId() {
-            return platformId;
-        }
-
-        @JsonProperty("platformId")
-        public void setPlatformId(String platformId) {
-            this.platformId = platformId;
-        }
-
-        @JsonProperty("gameMode")
-        public String getGameMode() {
-            return gameMode;
-        }
-
-        @JsonProperty("gameMode")
-        public void setGameMode(String gameMode) {
-            this.gameMode = gameMode;
-        }
-
-        @JsonProperty("mapId")
-        public Integer getMapId() {
-            return mapId;
-        }
-
-        @JsonProperty("mapId")
-        public void setMapId(Integer mapId) {
-            this.mapId = mapId;
-        }
-
-        @JsonProperty("gameType")
-        public String getGameType() {
-            return gameType;
-        }
-
-        @JsonProperty("gameType")
-        public void setGameType(String gameType) {
-            this.gameType = gameType;
-        }
-
-        @JsonProperty("teams")
-        public List<Team> getTeams() {
-            return teams;
-        }
-
-        @JsonProperty("teams")
-        public void setTeams(List<Team> teams) {
-            this.teams = teams;
-        }
-
-        @JsonAnyGetter
-        public Map<String, Object> getAdditionalProperties() {
-            return this.additionalProperties;
-        }
-
-        @JsonAnySetter
-        public void setAdditionalProperty(String name, Object value) {
-            this.additionalProperties.put(name, value);
-        }
 
 }
 

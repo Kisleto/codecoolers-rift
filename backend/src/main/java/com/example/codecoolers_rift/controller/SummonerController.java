@@ -2,6 +2,7 @@ package com.example.codecoolers_rift.controller;
 
 import com.example.codecoolers_rift.model.Summoner;
 import com.example.codecoolers_rift.model.SummonerInfo;
+import com.example.codecoolers_rift.repository.SummonerRepository;
 import com.example.codecoolers_rift.service.SummonerService;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +19,13 @@ public class SummonerController {
     @Autowired
     SummonerService summonerService;
 
+    @Autowired
+    SummonerRepository summonerRepository;
+
     @RequestMapping(method = RequestMethod.GET)
     public Summoner getSummoner(@PathVariable("region") String region, @PathVariable("name") String name){
        Summoner summoner = summonerService.getSummoner(region, name);
-        return summoner;
+       summonerRepository.save(summoner);
+       return summoner;
     }
 }

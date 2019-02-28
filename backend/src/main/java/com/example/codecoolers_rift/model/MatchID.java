@@ -1,37 +1,28 @@
 package com.example.codecoolers_rift.model;
 
 import com.fasterxml.jackson.annotation.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
 public class MatchID {
 
-    @JsonProperty("matches")
-    private List<Match> matches = null;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    @Id
+    @GeneratedValue
+    private Long id;
+
 
     @JsonProperty("matches")
-    public List<Match> getMatches() {
-        return matches;
-    }
-
-    @JsonProperty("matches")
-    public void setMatches(List<Match> matches) {
-        this.matches = matches;
-    }
-
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
-
+    @OneToMany(mappedBy = "matchID", cascade = CascadeType.PERSIST)
+    private List<Match> matches;
 
 }
