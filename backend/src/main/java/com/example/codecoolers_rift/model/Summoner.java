@@ -37,12 +37,11 @@ public class Summoner {
     @OneToMany(mappedBy = "summoner", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @JsonProperty("mastery_level")
     private List<ChampionMastery> championMasteryArrayList = new ArrayList<>();
-    @OneToMany(mappedBy = "summoner", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-    @JsonProperty("match")
-    private List<Match> topMatches = new ArrayList<>();
-    @OneToMany(mappedBy = "summoner", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-    @JsonProperty("matches")
-    private List<MatchHistoryInfo> lastMatches= new ArrayList<>();
+    @ElementCollection
+    private List<Long> matchids = new ArrayList<>();
+
+    @Transient
+    private LastGameInfo lastGameInfo;
 
     public List<LeagueRank> addtoLeaguerank(LeagueRank[] leagueRanks){
         Collections.addAll(summonerRank, leagueRanks);
@@ -53,12 +52,9 @@ public class Summoner {
         Collections.addAll(championMasteryArrayList, championMastery);
     }
 
-    public void addToTopMatches(Match match){
-        topMatches.add(match);
+    public void addtoMatches(Long id){
+        matchids.add(id);
     }
 
-    public void addToLastMatches(MatchHistoryInfo matchHistoryInfo){
-        lastMatches.add(matchHistoryInfo);
-    }
 
 }
