@@ -41,16 +41,20 @@ public class ChampionMastery {
 
     @JsonProperty("championLevel")
     private long championLevel;
+    @Transient
     @JsonProperty("chestGranted")
     private boolean chestGranted;
     @JsonProperty("championPoints")
     private long championPoints;
+    @Transient
     @JsonProperty("championPointsSinceLastLevel")
     private long championPointsSinceLastLevel;
+    @Transient
     @JsonProperty("championPointsUntilNextLevel")
     private long championPointsUntilNextLevel;
     @JsonProperty("summonerId")
     private String summonerId;
+    @Transient
     @JsonProperty("tokensEarned")
     private long tokensEarned;
     @JsonProperty("championId")
@@ -58,6 +62,7 @@ public class ChampionMastery {
     @JsonIgnore
     @Transient
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    @Transient
     @JsonProperty("lastPlayTime")
     private long lastPlayTime;
 

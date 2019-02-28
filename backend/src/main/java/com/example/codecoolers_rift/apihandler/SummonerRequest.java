@@ -13,7 +13,7 @@ import java.util.List;
 public class SummonerRequest {
 
 
-    private static String key = "RGAPI-72b1bc16-783b-4e7e-8e22-714d0e82253c";
+    private static String key = "RGAPI-f017da10-509d-4573-acd0-81d845a54a53";
 
 
 
