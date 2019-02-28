@@ -128,22 +128,109 @@ class Panel extends Component {
                         </Grid>
                     </div>
                 </div>
-                <Grid className="Grid" margin={2}>
+                <div id="blueTeam"><h3 id="blue">Blue Team</h3></div>
+                <Grid margin={2}>
                     <table className="table table-bordered">
-                        <thead className="thead-light">
+                        <thead>
                         <tr>
-                            <th>matchID</th>
-                            <th>CurrentPlatformId</th>
+                            <th>Summoner Name</th>
+                            <th>Participant ID</th>
+                            <th>Win</th>
+                            <th>Kills</th>
+                            <th>Deaths</th>
+                            <th>Assists</th>
+                            <th>Largest Killing Spree</th>
+                            <th>Largest Multi Kill</th>
                         </tr>
                         </thead>
                         <tbody className="matchesData">
+                        <tr style={{listStyleType: "none", paddingLeft: 0}}>
+                            {this.state.persons.lastGameInfo !== undefined &&
+                            <td>{Array.from(this.state.persons.lastGameInfo.blueTeam).map((value, i) => <li
+                                key={i}>{value.summonerName}</li>)}</td>
+                            }
+                            {this.state.persons.lastGameInfo !== undefined &&
+                            <td>{Array.from(this.state.persons.lastGameInfo.blueTeam).map((value, i) => <li
+                                key={i}>{value.stats.participantId}</li>)}</td>
+                            }
+                            {this.state.persons.lastGameInfo !== undefined &&
+                            <td>{Array.from(this.state.persons.lastGameInfo.blueTeam).map((value, i) => <li
+                                key={i}>{value.stats.win}</li>)}</td>
+                            }
+                            {this.state.persons.lastGameInfo !== undefined &&
+                            <td>{Array.from(this.state.persons.lastGameInfo.blueTeam).map((value, i) => <li
+                                key={i}>{value.stats.kills}</li>)}</td>
+                            }
+                            {this.state.persons.lastGameInfo !== undefined &&
+                            <td>{Array.from(this.state.persons.lastGameInfo.blueTeam).map((value, i) => <li
+                                key={i}>{value.stats.deaths}</li>)}</td>
+                            }
+                            {this.state.persons.lastGameInfo !== undefined &&
+                            <td>{Array.from(this.state.persons.lastGameInfo.blueTeam).map((value, i) => <li
+                                key={i}>{value.stats.assists}</li>)}</td>
+                            }
+                            {this.state.persons.lastGameInfo !== undefined &&
+                            <td>{Array.from(this.state.persons.lastGameInfo.blueTeam).map((value, i) => <li
+                                key={i}>{value.stats.largestKillingSpree}</li>)}</td>
+                            }
+                            {this.state.persons.lastGameInfo !== undefined &&
+                            <td>{Array.from(this.state.persons.lastGameInfo.blueTeam).map((value, i) => <li
+                                key={i}>{value.stats.largestMultiKill}</li>)}</td>
+                            }
+                        </tr>
+                        </tbody>
+
+                    </table>
+                </Grid>
+                <div id="redTeam"><h3 id="red">Red Team</h3></div>
+                <Grid margin={2}>
+                    <table className="table table-bordered">
+                        <thead>
                         <tr>
-                            <ul style={{listStyleType: "none", paddingLeft: 0}}>
-                                {this.state.persons.matches !== undefined &&
-                                <td>{Array.from(this.state.persons.matches).map((value, i) => <li
-                                    key={i}>{value.gameId}</li>)}</td>
-                                }
-                            </ul>
+                            <th>Summoner Name</th>
+                            <th>Participant ID</th>
+                            <th>Win</th>
+                            <th>Kills</th>
+                            <th>Deaths</th>
+                            <th>Assists</th>
+                            <th>Largest Killing Spree</th>
+                            <th>Largest Multi Kill</th>
+                        </tr>
+                        </thead>
+                        <tbody className="matchesData">
+                        <tr style={{listStyleType: "none", paddingLeft: 0}}>
+                            {this.state.persons.lastGameInfo !== undefined &&
+                            <td>{Array.from(this.state.persons.lastGameInfo.redTeam).map((value, i) => <li
+                                key={i}>{value.summonerName}</li>)}</td>
+                            }
+                            {this.state.persons.lastGameInfo !== undefined &&
+                            <td>{Array.from(this.state.persons.lastGameInfo.redTeam).map((value, i) => <li
+                                key={i}>{value.stats.participantId}</li>)}</td>
+                            }
+                            {this.state.persons.lastGameInfo !== undefined &&
+                            <td>{Array.from(this.state.persons.lastGameInfo.redTeam).map((value, i) => <li
+                                key={i}>{value.stats.win}</li>)}</td>
+                            }
+                            {this.state.persons.lastGameInfo !== undefined &&
+                            <td>{Array.from(this.state.persons.lastGameInfo.redTeam).map((value, i) => <li
+                                key={i}>{value.stats.kills}</li>)}</td>
+                            }
+                            {this.state.persons.lastGameInfo !== undefined &&
+                            <td>{Array.from(this.state.persons.lastGameInfo.redTeam).map((value, i) => <li
+                                key={i}>{value.stats.deaths}</li>)}</td>
+                            }
+                            {this.state.persons.lastGameInfo !== undefined &&
+                            <td>{Array.from(this.state.persons.lastGameInfo.redTeam).map((value, i) => <li
+                                key={i}>{value.stats.assists}</li>)}</td>
+                            }
+                            {this.state.persons.lastGameInfo !== undefined &&
+                            <td>{Array.from(this.state.persons.lastGameInfo.redTeam).map((value, i) => <li
+                                key={i}>{value.stats.largestKillingSpree}</li>)}</td>
+                            }
+                            {this.state.persons.lastGameInfo !== undefined &&
+                            <td>{Array.from(this.state.persons.lastGameInfo.redTeam).map((value, i) => <li
+                                key={i}>{value.stats.largestMultiKill}</li>)}</td>
+                            }
                         </tr>
                         </tbody>
 

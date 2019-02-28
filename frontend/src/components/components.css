@@ -16,6 +16,21 @@
     border: 1px;
     overflow: auto;  /*if you don't want #second to wrap below #first */
 }
+#blue {
+    color: blue;
+}
+#blueTeam {
+    margin-left: 15px;
+    margin-top: 20px;
+    margin-bottom: -10px;
+}
+#red {
+    color: red;
+}
+#redTeam {
+    margin-left: 15px;
+    margin-bottom: -10px;
+}
 th {
     background-color: #343a40!important;
     color: #f2f2f2;
