@@ -51,8 +51,9 @@ class Panel extends Component {
     };
 
     componentWillReceiveProps(props) {
-        this.setState((prevState) => ({persons: props.peeps}));
-        console.log(this.state.persons);
+        let people = props.peeps.people;
+        this.setState((prevState) => ({persons: people}));
+
     }
 
 
@@ -73,7 +74,7 @@ class Panel extends Component {
                         <ul style={{listStyleType: "none", paddingLeft: 4}}>
                             {this.state.persons.ranks !== undefined &&
                             <div>
-                                {Array.from(this.state.persons.persons.ranks).map((value, i) => <li
+                                {Array.from(this.state.persons.ranks).map((value, i) => <li
                                     key={i}>{value.queueType} <br/> {value.tier}</li>)}
                             </div>
                             }
