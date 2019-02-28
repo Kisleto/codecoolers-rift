@@ -30,18 +30,6 @@ class DetailedExpansionPanel extends Component {
         this.setState({data: event.target.value})
     }
 
-    handleSubmit(event) {
-        event.preventDefault();
-        fetch(`http://localhost:8080/euw1/${event.target.value}`)
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (myJson) {
-                console.log(JSON.stringify(myJson));
-            });
-    }
-
-
     render() {
         return (
             <Navbar bg="dark" variant="dark">
@@ -65,6 +53,22 @@ class DetailedExpansionPanel extends Component {
                 </Form>
             </Navbar>
         );
+    }
+
+
+    handleSubmit(event) {
+        event.preventDefault();
+        fetch(`http://localhost:8080/euw1/${event.target.value}`)
+            .then(function (response) {
+                return response.json();
+            })
+
+            .then(function (myJson) {
+                console.log(JSON.stringify(myJson));
+            });
+        this.setState({data: event.target.value});
+        console.log("===========================");
+        console.log(this.state.data)
     }
 }
 
