@@ -43,23 +43,16 @@ public class SummonerRequest {
         return championMastery;
     }
 
-    public MatchID callMatchIDRestApi(String region, String accountId){
-        String url = "https://"+region+".api.riotgames.com/lol/match/v4/matchlists/by-account/"+accountId+"?api_key="+key;
+
+
+    public Match[] callMatchHistory(String region, String encryptedAccountId){
+        String url = "https://"+region+".api.riotgames.com/lol/match/v4/matchlists/by-account/"+ encryptedAccountId+"?api_key="+key;
         RestTemplate restTemplate = new RestTemplate();
-        MatchID matches =
-                restTemplate.getForObject(url, MatchID.class);
+        Match[] matches = restTemplate.getForObject(url, Match[].class);
         return matches;
-
     }
 
-    public MatchHistoryInfo callMatchRestAPI(String region, Long gameID){
-        String url = "https://"+region+".api.riotgames.com/lol/match/v4/matches/"+gameID+"?api_key="+key;
-        RestTemplate restTemplate = new RestTemplate();
-        MatchHistoryInfo matchHistoryInfo = restTemplate
-                .getForObject(url, MatchHistoryInfo.class);
-        return matchHistoryInfo;
 
-    }
 
 
 }

@@ -31,15 +31,9 @@ public class SummonerService {
         summonerInfo = summonerRequest.callRestAPI(region, name);
         LeagueRank[] leagueRank = summonerRequest.callRankRestAPI(region, summonerInfo.getId());
         ChampionMastery[] championMasteries = summonerRequest.callCMRestApi(region, summonerInfo.getId());
-        MatchID matches = summonerRequest.callMatchIDRestApi(region, summonerInfo.getAccountId());
         fillSummonerData();
         fillRankData(summoner, leagueRank);
         fillMasteryData(summoner, championMasteries);
-        fillMatchIDData(summoner, matches);
-        for (Match match: summoner.getTopMatches()) {
-            MatchHistoryInfo currentGame = summonerRequest.callMatchRestAPI(region, match.getGameId());
-            fillMatchHistory(summoner, currentGame);
-        }
         return summoner;
     }
 
@@ -75,17 +69,6 @@ public class SummonerService {
         for (int i=0; i <3; i++){
             summoner.addtoMasteryRank(championMasteries[i]);
         }
-    }
-
-    private void fillMatchIDData(Summoner summoner, MatchID matchID){
-        List<Match> topMatches = matchID.getMatches();
-        for (int i=0; i < 5; i++){
-            summoner.addToTopMatches(topMatches.get(i));
-        }
-    }
-
-    private void fillMatchHistory(Summoner summoner, MatchHistoryInfo matchHistoryInfo){
-        summoner.addToLastMatches(matchHistoryInfo);
     }
 
 }
