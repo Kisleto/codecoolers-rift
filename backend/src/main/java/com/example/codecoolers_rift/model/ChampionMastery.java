@@ -40,19 +40,24 @@ public class ChampionMastery {
     @JsonProperty("championLevel")
     private long championLevel;
     @JsonProperty("chestGranted")
+    @Transient
     private boolean chestGranted;
     @JsonProperty("championPoints")
     private long championPoints;
+    @Transient
     @JsonProperty("championPointsSinceLastLevel")
     private long championPointsSinceLastLevel;
+    @Transient
     @JsonProperty("championPointsUntilNextLevel")
     private long championPointsUntilNextLevel;
     @JsonProperty("summonerId")
     private String summonerId;
+    @Transient
     @JsonProperty("tokensEarned")
     private long tokensEarned;
     @JsonProperty("championId")
     private long championId;
+    @Transient
     @JsonProperty("lastPlayTime")
     private long lastPlayTime;
 

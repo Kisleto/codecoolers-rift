@@ -22,11 +22,9 @@ public class SummonerService {
 
     public Summoner getSummoner(String region, String name){
 
-        /*if (championMasteryRepository.existsBySummonerId()) {
+        if (championMasteryRepository.existsAllByChampionIdIsNotNull()) {
             System.out.println("Already exist");
-        } else {
-            saveToDatabase();
-        }*/
+        }
 
         summonerInfo = summonerRequest.callRestAPI(region, name);
         LeagueRank[] leagueRank = summonerRequest.callRankRestAPI(region, summonerInfo.getId());
@@ -40,15 +38,21 @@ public class SummonerService {
             MatchHistoryInfo currentGame = summonerRequest.callMatchRestAPI(region, match.getGameId());
             fillMatchHistory(summoner, currentGame);
         }
+        saveToDatabase(championMasteries);
         return summoner;
     }
 
-    public void saveToDatabase() {
-        ChampionMastery championMastery = ChampionMastery.builder()
-                .championId(summoner.getChampionId())
-                .build();
+    public void saveToDatabase(ChampionMastery[] championMasteries) {
+        for (ChampionMastery championMastery: championMasteries) {
+            ChampionMastery champMastery = ChampionMastery.builder()
+                    .championId(championMastery.getChampionId())
+                    .championPoints(championMastery.getChampionPoints())
+                    .championLevel(championMastery.getChampionLevel())
+                    .summonerId(championMastery.getSummonerId())
+                    .build();
 
-        championMasteryRepository.save(championMastery);
+            championMasteryRepository.save(champMastery);
+        }
 
 
     }
@@ -70,7 +74,6 @@ public class SummonerService {
 
     }
 
-    //Ez kell nekem (Peti)
     private void fillMasteryData(Summoner summoner, ChampionMastery[] championMasteries){
         for (int i=0; i <3; i++){
             summoner.addtoMasteryRank(championMasteries[i]);
