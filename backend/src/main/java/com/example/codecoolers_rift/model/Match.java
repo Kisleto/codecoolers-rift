@@ -12,6 +12,10 @@ import javax.persistence.*;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
         "lane",
@@ -23,38 +27,26 @@ import java.util.Map;
         "role",
         "season"
 })
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
 public class Match {
 
-    @Id
-    @GeneratedValue
-    private Long id;
-
-    @ManyToOne
-    private Summoner summoner;
-
-    @ManyToOne
-    private MatchID matchID;
-
     @JsonProperty("lane")
-    private String lane;
+    public String lane;
     @JsonProperty("gameId")
-    private long gameId;
+    public Long gameId;
     @JsonProperty("champion")
-    private Integer champion;
+    public Integer champion;
     @JsonProperty("platformId")
-    private String platformId;
+    public String platformId;
     @JsonProperty("timestamp")
-    private long timestamp;
+    public Long timestamp;
     @JsonProperty("queue")
-    private Integer queue;
+    public Integer queue;
     @JsonProperty("role")
-    private String role;
+    public String role;
     @JsonProperty("season")
-    private Integer season;
+    public Integer season;
 
 }

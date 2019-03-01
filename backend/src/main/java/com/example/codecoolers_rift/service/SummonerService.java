@@ -5,11 +5,13 @@ import com.example.codecoolers_rift.model.*;
 import com.example.codecoolers_rift.repository.ChampionMasteryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
 
 @Service
+@CrossOrigin
 public class SummonerService {
 
     @Autowired
@@ -19,6 +21,8 @@ public class SummonerService {
     private ChampionMastery championMastery;
     private SummonerInfo summonerInfo;
     private Summoner summoner;
+    @Autowired
+    private MatchHistoryService matchHistoryService;
 
     public Summoner getSummoner(String region, String name){
 
@@ -29,16 +33,11 @@ public class SummonerService {
         summonerInfo = summonerRequest.callRestAPI(region, name);
         LeagueRank[] leagueRank = summonerRequest.callRankRestAPI(region, summonerInfo.getId());
         ChampionMastery[] championMasteries = summonerRequest.callCMRestApi(region, summonerInfo.getId());
-        MatchID matches = summonerRequest.callMatchIDRestApi(region, summonerInfo.getAccountId());
         fillSummonerData();
         fillRankData(summoner, leagueRank);
         fillMasteryData(summoner, championMasteries);
-        fillMatchIDData(summoner, matches);
-        for (Match match: summoner.getTopMatches()) {
-            MatchHistoryInfo currentGame = summonerRequest.callMatchRestAPI(region, match.getGameId());
-            fillMatchHistory(summoner, currentGame);
-        }
-        saveToDatabase(championMasteries);
+        summoner.setMatchids(summonerRequest.callMatchHistory(region, summonerInfo.getAccountId()).getMatchids());
+        summoner.setLastGameInfo(matchHistoryService.fillLastGameInfo(region, summoner.getMatchids().get(0)));
         return summoner;
     }
 
@@ -61,6 +60,7 @@ public class SummonerService {
 
     }
 
+
     private void fillSummonerData(){
         summoner = new Summoner();
         summoner.setName(summonerInfo.getName());
@@ -71,24 +71,13 @@ public class SummonerService {
 
     private void fillRankData(Summoner summoner, LeagueRank[] leagueRanks){
         summoner.setSummonerRank(summoner.addtoLeaguerank(leagueRanks));
-
     }
+
 
     private void fillMasteryData(Summoner summoner, ChampionMastery[] championMasteries){
         for (int i=0; i <3; i++){
             summoner.addtoMasteryRank(championMasteries[i]);
         }
-    }
-
-    private void fillMatchIDData(Summoner summoner, MatchID matchID){
-        List<Match> topMatches = matchID.getMatches();
-        for (int i=0; i < 5; i++){
-            summoner.addToTopMatches(topMatches.get(i));
-        }
-    }
-
-    private void fillMatchHistory(Summoner summoner, MatchHistoryInfo matchHistoryInfo){
-        summoner.addToLastMatches(matchHistoryInfo);
     }
 
 }

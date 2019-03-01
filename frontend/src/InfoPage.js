@@ -1,27 +1,29 @@
-import Header from "./components/header";
 import Panel from "./components/panel";
 import React, {Component} from "react";
-import axios from "axios";
-import Rank from "./components/Rank"
 
 class InfoPage extends Component {
     state = {
-        persons: []
+        people: [],
+        name: ""
     };
 
-    componentDidMount() {
-        axios.get(`http://localhost:8080/euw1/VoidWar`)
-            .then(res => {
-                const persons = res.data;
-                this.setState({persons});
+    constructor(props) {
+        super(props);
+    }
 
-            })
+
+
+
+    componentWillReceiveProps(props) {
+        this.setState({people: props});
+        console.log("__________________________________");
+        console.log(props)
     }
 
     render() {
         return (
             <div>
-                <Panel persons={this.state.persons}/>
+                <Panel peeps={this.state.people}/>
             </div>
         )
     }
