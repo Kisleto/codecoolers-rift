@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import {Grid} from 'gymnast'
-import Rank from "./Rank";
-import axios from "axios";
 import './components.css'
 import '../index.css'
 
@@ -53,26 +51,15 @@ class Panel extends Component {
     };
 
     componentWillReceiveProps(props) {
-        console.log("EZ A PANELE");
-        console.log(props);
-        console.log("=================");
-        this.setState((prevState) => ({persons: props.persons}));
+        let people = props.peeps.people;
+        this.setState((prevState) => ({persons: people}));
 
     }
 
+
     render() {
         const {classes} = this.props;
-        console.log(this.state.persons);
-        /*let matchElement = document.getElementsByClassName("matchesData");
-        for (let match of persons.matches) {
-            let matchId = match.seasonId;
-            let currentPlatformId = match.participantIdentities.currentPlatformId;
-            let div = `<tr>
-                        <td>${matchId}</td>
-                        <td>${currentPlatformId}</td>
-                        </tr>`;
-            matchElement.innerHTML += div;
-        }*/
+
         return (
             <div className="big div">
                 <div id="wrapper">

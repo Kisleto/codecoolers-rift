@@ -3,6 +3,7 @@ package com.example.codecoolers_rift.apihandler;
 import com.example.codecoolers_rift.model.*;
 import com.example.codecoolers_rift.model.gameidentity.GameData;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.client.RestTemplate;
 
 import javax.validation.constraints.Size;
@@ -11,11 +12,16 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Component
+@CrossOrigin
 public class SummonerRequest {
 
   
     private static String key = "RGAPI-315359ee-8024-4c09-b623-705dbaea1034";
 
+<<<<<<< HEAD
+=======
+    private static String key = "RGAPI-f017da10-509d-4573-acd0-81d845a54a53";
+>>>>>>> searchbar
 
 
 
