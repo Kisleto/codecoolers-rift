@@ -16,12 +16,8 @@ import java.util.List;
 public class SummonerRequest {
 
   
-    private static String key = "RGAPI-315359ee-8024-4c09-b623-705dbaea1034";
 
-<<<<<<< HEAD
-=======
-    private static String key = "RGAPI-f017da10-509d-4573-acd0-81d845a54a53";
->>>>>>> searchbar
+    private static String key = "RGAPI-38caf7a3-d729-4b00-8d11-3e0eaf9516dd";
 
 
 

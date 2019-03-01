@@ -66,7 +66,7 @@ class Panel extends Component {
                     <div id="first">
                         <Grid className={classes.name} size={7} margin={2}>
                             <img className={classes.avatar}
-                                 src={`http://avatar.leagueoflegends.com/euw/${this.props.persons.name}.png`}
+                                 src={`http://avatar.leagueoflegends.com/euw/${this.state.persons.name}.png`}
                                  alt="new"
                             />
                             {this.state.persons.name} <br/> {this.state.persons.summonerLevel}
