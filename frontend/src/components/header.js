@@ -18,6 +18,7 @@ const styles = theme => ({
 });
 
 class DetailedExpansionPanel extends Component {
+
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -55,9 +56,17 @@ class DetailedExpansionPanel extends Component {
                     <Nav className="mr-auto">
                         <Nav.Link href="#home">Home</Nav.Link>
                         <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                            <button value="na1" onClick={event => this.handleRegionChange(event)}>NA</button>
-                            <button value="eun1" onClick={event => this.handleRegionChange(event)}>EUNE</button>
-                            <button value="euw1" onClick={event => this.handleRegionChange(event)}>EUW</button>
+                            <button className="button" value="na1"
+                                    onClick={event => this.handleRegionChange(event)}>NA
+                            </button>
+                            <br></br>
+                            <button className="button" value="eun1"
+                                    onClick={event => this.handleRegionChange(event)}>EUNE
+                            </button>
+                            <br></br>
+                            <button className="button" value="euw1"
+                                    onClick={event => this.handleRegionChange(event)}>EUW
+                            </button>
                         </NavDropdown>
                         <Button variant="outlined"> Login </Button>
                     </Nav>
