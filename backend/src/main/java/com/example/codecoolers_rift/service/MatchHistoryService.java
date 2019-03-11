@@ -3,7 +3,6 @@ package com.example.codecoolers_rift.service;
 
 import com.example.codecoolers_rift.apihandler.SummonerRequest;
 import com.example.codecoolers_rift.model.LastGameInfo;
-import com.example.codecoolers_rift.model.Summoner;
 import com.example.codecoolers_rift.model.gameidentity.GameData;
 import com.example.codecoolers_rift.model.gameidentity.Participant;
 import com.example.codecoolers_rift.model.gameidentity.ParticipantIdentity;
@@ -21,7 +20,7 @@ public class MatchHistoryService {
 
     public LastGameInfo fillLastGameInfo(String region, Long matchId){
         LastGameInfo lastGameInfo = new LastGameInfo();
-        GameData gameData = summonerRequest.callGameDataRestApi(region, matchId);
+        GameData gameData = summonerRequest.callMatchInfo(region, matchId);
         List<Participant> participants = gameData.getParticipants();
         List<ParticipantIdentity> participantIdentities = gameData.getParticipantIdentities();
         for (Participant participant: participants){
@@ -32,7 +31,7 @@ public class MatchHistoryService {
                 }
             }
             summonerStats.setStats(participant.stats);
-            if (participant.getTeamId() == 100){
+            if (participant.getTeamId() == 100){ // put this into a static constant
                 lastGameInfo.addtoBlue(summonerStats);
             }
             else if (participant.getTeamId() == 200){

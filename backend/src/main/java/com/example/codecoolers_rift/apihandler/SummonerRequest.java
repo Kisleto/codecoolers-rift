@@ -12,17 +12,16 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Component
-@CrossOrigin
+@CrossOrigin // needed?
 public class SummonerRequest {
 
   
 
-    private static String key = "RGAPI-38caf7a3-d729-4b00-8d11-3e0eaf9516dd";
-
-
+    private static final String key = "RGAPI-efa41204-9ec5-4c29-abc9-e84b2545424e";
+    private static final String apiURL = ".api.riotgames.com/lol/";
 
     public SummonerInfo callRestAPI(String region, String name){
-        String url = "https://"+region+".api.riotgames.com/lol/summoner/v4/summoners/by-name/"+name+"?api_key="+key;
+        String url = "https://" + region + apiURL + "summoner/v4/summoners/by-name/"+name+"?api_key="+key;
         RestTemplate restTemplate = new RestTemplate();
         SummonerInfo summonerInfo = restTemplate
                 .getForObject(url, SummonerInfo.class);
@@ -31,7 +30,7 @@ public class SummonerRequest {
     }
 
     public LeagueRank[] callRankRestAPI(String region,String id){
-        String url = "https://"+region+".api.riotgames.com/lol/league/v4/positions/by-summoner/"+id+"?api_key="+key;
+        String url = "https://"+region+apiURL+"league/v4/positions/by-summoner/"+id+"?api_key="+key;
         RestTemplate restTemplate = new RestTemplate();
         LeagueRank[] leagueRank = restTemplate
                 .getForObject(url, LeagueRank[].class);
@@ -39,7 +38,7 @@ public class SummonerRequest {
 
     }
     public ChampionMastery[] callCMRestApi(String region,String id) {
-        String url = "https://"+region+".api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/"+id+"?api_key="+key;
+        String url = "https://"+region+apiURL+"champion-mastery/v4/champion-masteries/by-summoner/"+id+"?api_key="+key;
         RestTemplate restTemplate = new RestTemplate();
         ChampionMastery[] championMastery = restTemplate
                 .getForObject(url, ChampionMastery[].class);
@@ -54,7 +53,7 @@ public class SummonerRequest {
         return matchHistory;
     }
 
-    public GameData callGameDataRestApi(String region, Long matchId){
+    public GameData callMatchInfo(String region, Long matchId){
         String url ="https://"+region+".api.riotgames.com/lol/match/v4/matches/"+ matchId+"?api_key="+key;
         RestTemplate restTemplate = new RestTemplate();
         GameData gameData = restTemplate.getForObject(url, GameData.class);

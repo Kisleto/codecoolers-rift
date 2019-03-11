@@ -34,7 +34,7 @@ class DetailedExpansionPanel extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        axios.get(`http://localhost:8080/euw1/${this.state.data}`)
+        axios.get(`http://localhost:8080/euw1/${this.state.data}`) // TODO Make this constant!!!
             .then(res => {
                 const persons = res.data;
                 this.setState({persons});
