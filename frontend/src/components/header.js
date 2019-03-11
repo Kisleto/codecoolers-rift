@@ -55,7 +55,7 @@ class DetailedExpansionPanel extends Component {
                     <Navbar.Brand href="#home">Codecoolers Rift</Navbar.Brand>
                     <Nav className="mr-auto">
                         <Nav.Link href="#home">Home</Nav.Link>
-                        <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+                        <NavDropdown title="Region" id="basic-nav-dropdown">
                             <button className="button" value="na1"
                                     onClick={event => this.handleRegionChange(event)}>NA
                             </button>
