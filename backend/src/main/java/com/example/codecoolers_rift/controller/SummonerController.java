@@ -26,6 +26,7 @@ public class SummonerController {
     public Summoner getSummoner(@PathVariable("region") String region, @PathVariable("name") String name){
        Summoner summoner = summonerService.getSummoner(region, name);
        summonerRepository.save(summoner);
-       return summoner;
+        return summonerRepository.findByName(name);
     }
+
 }
