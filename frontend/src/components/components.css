@@ -44,6 +44,7 @@ td{
     display: block;
     background-color: #4caf50;
     min-width: 16px;
+    width: 100%;
     padding: 5px 20px;
     z-index: 1;
     border: none;
