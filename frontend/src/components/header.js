@@ -23,7 +23,8 @@ class DetailedExpansionPanel extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.state = {
             persons: [],
-            data: ""
+            data: "",
+            region: ""
         }
     }
 
@@ -32,9 +33,13 @@ class DetailedExpansionPanel extends Component {
         this.setState({data: event.target.value});
     }
 
+    handleRegionChange(e) {
+        this.setState({region: e.target.value});
+        console.log(this.state.region)
+    }
     handleSubmit(event) {
         event.preventDefault();
-        axios.get(`http://localhost:8080/euw1/${this.state.data}`) // TODO Make this constant!!!
+        axios.get(`http://localhost:8080/${this.state.region}/${this.state.data}`) // TODO Make this constant!!!
             .then(res => {
                 const persons = res.data;
                 this.setState({persons});
@@ -50,9 +55,9 @@ class DetailedExpansionPanel extends Component {
                     <Nav className="mr-auto">
                         <Nav.Link href="#home">Home</Nav.Link>
                         <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                            <NavDropdown.Item>NA</NavDropdown.Item>
-                            <NavDropdown.Item >EUNE</NavDropdown.Item>
-                            <NavDropdown.Item >EUW</NavDropdown.Item>
+                            <button value="na1" onClick={event => this.handleRegionChange(event)}>NA</button>
+                            <button value="eun1" onClick={event => this.handleRegionChange(event)}>EUNE</button>
+                            <button value="euw1" onClick={event => this.handleRegionChange(event)}>EUW</button>
                         </NavDropdown>
                         <Button variant="outlined"> Login </Button>
                     </Nav>
