@@ -60,11 +60,9 @@ class DetailedExpansionPanel extends Component {
                             <button className="button" value="na1"
                                     onClick={event => this.handleRegionChange(event)}>NA
                             </button>
-                            <br></br>
                             <button className="button" value="eun1"
                                     onClick={event => this.handleRegionChange(event)}>EUNE
                             </button>
-                            <br></br>
                             <button className="button" value="euw1"
                                     onClick={event => this.handleRegionChange(event)}>EUW
                             </button>
