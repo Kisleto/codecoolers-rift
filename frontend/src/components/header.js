@@ -41,7 +41,7 @@ class DetailedExpansionPanel extends Component {
     handleSubmit(event) {
         let riotAPIUrl = `http://localhost:8080/${this.state.region}/${this.state.data}`
         event.preventDefault();
-        axios.get(riotAPIUrl // TODO Make this constant!!!
+        axios.get(riotAPIUrl)
             .then(res => {
                 const persons = res.data;
                 this.setState({persons});
