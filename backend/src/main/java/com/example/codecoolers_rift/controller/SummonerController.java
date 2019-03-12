@@ -25,12 +25,14 @@ public class SummonerController {
     @RequestMapping(method = RequestMethod.GET)
     public Summoner getSummonerJSONFromBackend(@PathVariable("region") String region, @PathVariable("name") String name){
        Summoner summoner = summonerService.getSummoner(region, name);
-       saveSummonerToDatabase(summoner);
-       return findSummonerByNameFromDB(name);
+       if (summonerRepository.findByName(name) == summoner) {
+           return findSummonerByNameFromDB(name);
+       }
+        return saveSummonerToDatabase(summoner);
     }
 
-    private void saveSummonerToDatabase(Summoner summoner) {
-        summonerRepository.save(summoner);
+    private Summoner saveSummonerToDatabase(Summoner summoner) {
+        return summonerRepository.save(summoner);
     }
 
     private Summoner findSummonerByNameFromDB(String name) {

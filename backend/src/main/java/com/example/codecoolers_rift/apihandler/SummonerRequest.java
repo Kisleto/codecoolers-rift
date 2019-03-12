@@ -17,7 +17,7 @@ public class SummonerRequest {
 
   
 
-    private static final String key = "RGAPI-efa41204-9ec5-4c29-abc9-e84b2545424e";
+    private static final String key = "RGAPI-39094f15-fdbb-46d0-96db-6565a824d4ef";
     private static final String apiURL = ".api.riotgames.com/lol/";
 
     public SummonerInfo callRestAPI(String region, String name){
