@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.9.2",
+    "auth0-js": "^9.10.0",
     "axios": "^0.18.0",
     "bootstrap": "^4.3.0",
     "classnames": "latest",
@@ -14,7 +15,8 @@
     "react-dom": "^16.8.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.4",
-    "react-search-field": "^1.0.0"
+    "react-search-field": "^1.0.0",
+    "history": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
