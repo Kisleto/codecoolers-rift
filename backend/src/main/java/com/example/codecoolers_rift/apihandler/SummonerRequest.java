@@ -12,7 +12,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Component
-@CrossOrigin // needed?
 public class SummonerRequest {
 
   
