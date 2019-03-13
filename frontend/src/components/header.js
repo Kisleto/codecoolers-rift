@@ -24,7 +24,8 @@ class DetailedExpansionPanel extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.state = {
             persons: [],
-            data: ""
+            data: "",
+            region: ""
         }
     }
 
@@ -78,7 +79,7 @@ class DetailedExpansionPanel extends Component {
                     </form>
                 </Navbar>
                 <div>
-                    <InfoPage people={this.state.persons}/>
+                    <InfoPage region={this.state.region} people={this.state.persons}/>
                 </div>
             </div>
 

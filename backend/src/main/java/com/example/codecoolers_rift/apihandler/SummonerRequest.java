@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
 public class SummonerRequest {
 
 
-    private static final String key = "RGAPI-428d93db-0d9d-4f50-b6d4-24341d241b84";
+    private static final String key = "RGAPI-b2e66f05-b070-428e-8247-ad2d30d11f20";
     private static final String apiURL = ".api.riotgames.com/lol/";
 
     public SummonerInfo callRestAPI(String region, String name){
