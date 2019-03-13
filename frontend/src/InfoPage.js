@@ -4,7 +4,8 @@ import React, {Component} from "react";
 class InfoPage extends Component {
     state = {
         people: [],
-        name: ""
+        name: "",
+        region: ""
     };
 
     constructor(props) {

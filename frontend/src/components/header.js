@@ -24,8 +24,7 @@ class DetailedExpansionPanel extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.state = {
             persons: [],
-            data: "",
-            region: ""
+            data: ""
         }
     }
 
@@ -67,7 +66,7 @@ class DetailedExpansionPanel extends Component {
                                     onClick={event => this.handleRegionChange(event)}>EUW
                             </button>
                         </NavDropdown>
-                        <Button variant="outlined"> Login </Button>
+                        <Button> Login </Button>
                     </Nav>
                     <form onSubmit={this.handleSubmit}>
                         <input value={this.state.data} onChange={event => this.handleSummonerNameChange(event)}
@@ -75,11 +74,11 @@ class DetailedExpansionPanel extends Component {
                             //onChange={onChange}
                                classNames="searchField"
                         />
-                        <Button variant="outline-info" type='submit'>Search</Button>
+                        <Button type='submit'>Search</Button>
                     </form>
                 </Navbar>
                 <div>
-                    <InfoPage people={this.state.persons} region={this.state.region}/>
+                    <InfoPage people={this.state.persons}/>
                 </div>
             </div>
 

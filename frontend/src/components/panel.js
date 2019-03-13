@@ -54,12 +54,14 @@ class Panel extends Component {
     componentWillReceiveProps(props) {
         let people = props.peeps.people;
         this.setState((prevState) => ({persons: people}));
-        this.getRegionInNormalWay(props)
 
     }
 
     getRegionInNormalWay(props) {
         let region = props.region;
+        if (region === "") {
+            this.setState({region: "euw"})
+        }
         if (region === "eun1") {
             this.setState({region: "eune"})
         }
