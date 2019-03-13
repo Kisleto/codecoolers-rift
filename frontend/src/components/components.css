@@ -53,4 +53,22 @@ td{
     text-decoration: none;
     font-size: 16px;
     position: center;
+    cursor: pointer;
+}
+
+a {
+    color: lightgrey;
+}
+
+a:hover {
+    color: white;
+}
+
+button.MuiButtonBase-root-31.MuiButton-root-5.MuiButton-outlined-13 {
+    border: none;
+    padding: 5px 16px;
+}
+
+span.MuiButton-label-6 {
+    color: lightgrey;
 }
