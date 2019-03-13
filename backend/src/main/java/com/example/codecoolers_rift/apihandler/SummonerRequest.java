@@ -1,23 +1,20 @@
 package com.example.codecoolers_rift.apihandler;
 
-import com.example.codecoolers_rift.model.*;
+import com.example.codecoolers_rift.model.ChampionMastery;
+import com.example.codecoolers_rift.model.LeagueRank;
+import com.example.codecoolers_rift.model.MatchHistory;
+import com.example.codecoolers_rift.model.SummonerInfo;
 import com.example.codecoolers_rift.model.gameidentity.GameData;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.client.RestTemplate;
 
-import javax.validation.constraints.Size;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
 @Component
 @CrossOrigin // needed?
 public class SummonerRequest {
 
-  
 
-    private static final String key = "RGAPI-efa41204-9ec5-4c29-abc9-e84b2545424e";
+    private static final String key = "RGAPI-428d93db-0d9d-4f50-b6d4-24341d241b84";
     private static final String apiURL = ".api.riotgames.com/lol/";
 
     public SummonerInfo callRestAPI(String region, String name){
