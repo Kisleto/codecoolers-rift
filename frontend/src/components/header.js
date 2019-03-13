@@ -7,7 +7,7 @@ import Button from "@material-ui/core/Button/Button";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import InfoPage from "../InfoPage";
 import axios from "axios";
-import Login from "login";
+import {Link} from 'react-router-dom'
 
 
 const styles = theme => ({
@@ -20,6 +20,7 @@ const styles = theme => ({
 
 class DetailedExpansionPanel extends Component {
 
+
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,9 +28,14 @@ class DetailedExpansionPanel extends Component {
             persons: [],
             data: "",
             region: ""
-        }
+        };
+        this.routeChange = this.routeChange.bind(this);
     }
 
+    routeChange() {
+        let path = `https://localhost:3000/login`;
+        this.props.history.push(path);
+    }
 
     handleSummonerNameChange(event) {
         this.setState({data: event.target.value});
@@ -40,7 +46,7 @@ class DetailedExpansionPanel extends Component {
         console.log(this.state.region)
     }
     handleSubmit(event) {
-        let riotAPIUrl = `http://localhost:8080/${this.state.region}/${this.state.data}`
+        let riotAPIUrl = `http://localhost:8080/${this.state.region}/${this.state.data}`;
         event.preventDefault();
         axios.get(riotAPIUrl)
             .then(res => {
@@ -67,8 +73,9 @@ class DetailedExpansionPanel extends Component {
                             <button className="button" value="euw1"
                                     onClick={event => this.handleRegionChange(event)}>EUW
                             </button>
+
                         </NavDropdown>
-                        <Button> Login </Button>
+                        <Link to="/login">Login</Link>
                     </Nav>
                     <form onSubmit={this.handleSubmit}>
                         <input value={this.state.data} onChange={event => this.handleSummonerNameChange(event)}
@@ -78,7 +85,6 @@ class DetailedExpansionPanel extends Component {
                         />
                         <Button type='submit'>Search</Button>
                     </form>
-                    <Login/>
                 </Navbar>
                 <div>
                     <InfoPage region={this.state.region} people={this.state.persons}/>

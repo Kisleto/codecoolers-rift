@@ -1,6 +1,7 @@
 import React, {Component} from "react";
-import {Button, FormGroup, FormControl, ControlLabel} from "react-bootstrap";
-import "./Login.css";
+import {Button, FormControl, FormGroup} from "react-bootstrap";
+import "./components/login.css";
+import {Link} from "react-router-dom";
 
 export default class Login extends Component {
     constructor(props) {
@@ -27,11 +28,12 @@ export default class Login extends Component {
     }
 
     render() {
+
         return (
             <div className="Login">
                 <form onSubmit={this.handleSubmit}>
                     <FormGroup controlId="email" bsSize="large">
-                        <ControlLabel>Email</ControlLabel>
+                        <p>Email</p>
                         <FormControl
                             autoFocus
                             type="email"
@@ -40,21 +42,23 @@ export default class Login extends Component {
                         />
                     </FormGroup>
                     <FormGroup controlId="password" bsSize="large">
-                        <ControlLabel>Password</ControlLabel>
+                        <p>Password</p>
                         <FormControl
                             value={this.state.password}
                             onChange={this.handleChange}
                             type="password"
                         />
                     </FormGroup>
-                    <Button
-                        block
-                        bsSize="large"
-                        disabled={!this.validateForm()}
-                        type="submit"
-                    >
-                        Login
-                    </Button>
+                    <Link to="/">
+                        <Button
+                            block
+                            bsSize="large"
+                            disabled={!this.validateForm()}
+                            type="submit"
+                        >
+                            Login
+                        </Button>
+                    </Link>
                 </form>
             </div>
         );
