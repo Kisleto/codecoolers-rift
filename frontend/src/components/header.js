@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button/Button";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import InfoPage from "../InfoPage";
 import axios from "axios";
+import {Link} from 'react-router-dom'
 import './components.css'
 
 
@@ -19,6 +20,7 @@ const styles = theme => ({
 });
 
 class DetailedExpansionPanel extends Component {
+
 
     constructor(props) {
         super(props);
@@ -40,7 +42,7 @@ class DetailedExpansionPanel extends Component {
         console.log(this.state.region)
     }
     handleSubmit(event) {
-        let riotAPIUrl = `http://localhost:8080/${this.state.region}/${this.state.data}`
+        let riotAPIUrl = `http://localhost:8080/${this.state.region}/${this.state.data}`;
         event.preventDefault();
         axios.get(riotAPIUrl)
             .then(res => {
@@ -66,8 +68,9 @@ class DetailedExpansionPanel extends Component {
                             <button className="button" value="euw1"
                                     onClick={event => this.handleRegionChange(event)}>EUW
                             </button>
+
                         </NavDropdown>
-                        <Button> Login </Button>
+                        <Link to="/login">Login</Link>
                     </Nav>
                     <form onSubmit={this.handleSubmit}>
                         <input value={this.state.data} onChange={event => this.handleSummonerNameChange(event)}
