@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button/Button";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import InfoPage from "../InfoPage";
 import axios from "axios";
+import Login from "login";
 
 
 const styles = theme => ({
@@ -77,6 +78,7 @@ class DetailedExpansionPanel extends Component {
                         />
                         <Button type='submit'>Search</Button>
                     </form>
+                    <Login/>
                 </Navbar>
                 <div>
                     <InfoPage region={this.state.region} people={this.state.persons}/>
