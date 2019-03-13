@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button/Button";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import InfoPage from "../InfoPage";
 import axios from "axios";
+import './components.css'
 
 
 const styles = theme => ({
