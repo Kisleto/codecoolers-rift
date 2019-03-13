@@ -24,6 +24,8 @@ public class Summoner {
     private Long dataId;
 
     private Integer profileIconId;
+    @OneToOne(cascade = CascadeType.PERSIST)
+    private Customer customer;
     private String name;
     private Integer summonerLevel;
     @JsonIgnore
