@@ -79,7 +79,7 @@ class DetailedExpansionPanel extends Component {
                     </form>
                 </Navbar>
                 <div>
-                    <InfoPage people={this.state.persons}/>
+                    <InfoPage people={this.state.persons} region={this.state.region}/>
                 </div>
             </div>
 

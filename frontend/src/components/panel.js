@@ -47,13 +47,28 @@ class Panel extends Component {
 
     state = {
         persons: [],
-        match: []
+        match: [],
+        region: ""
     };
 
     componentWillReceiveProps(props) {
         let people = props.peeps.people;
         this.setState((prevState) => ({persons: people}));
+        this.getRegionInNormalWay(props)
 
+    }
+
+    getRegionInNormalWay(props) {
+        let region = props.region;
+        if (region === "eun1") {
+            this.setState({region: "eune"})
+        }
+        if (region === "euw1") {
+            this.setState({region: "euw"})
+        }
+        if (region === "na1") {
+            this.setState({region: "na"})
+        }
     }
 
 
@@ -66,7 +81,7 @@ class Panel extends Component {
                     <div id="first">
                         <Grid className={classes.name} size={7} margin={2}>
                             <img className={classes.avatar}
-                                 src={`http://avatar.leagueoflegends.com/euw/${this.state.persons.name}.png`}
+                                 src={`http://avatar.leagueoflegends.com/${this.state.region}/${this.state.persons.name}.png`}
                                  alt="new"
                             />
                             {this.state.persons.name} <br/> {this.state.persons.summonerLevel}
