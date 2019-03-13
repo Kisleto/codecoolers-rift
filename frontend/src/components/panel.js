@@ -121,7 +121,6 @@ class Panel extends Component {
                         <thead>
                         <tr>
                             <th>Summoner Name</th>
-                            <th>Participant ID</th>
                             <th>Win</th>
                             <th>Kills</th>
                             <th>Deaths</th>
@@ -135,10 +134,6 @@ class Panel extends Component {
                             {this.state.persons.lastGameInfo !== undefined &&
                             <td>{Array.from(this.state.persons.lastGameInfo.blueTeam).map((value, i) => <li
                                 key={i}>{value.summonerName}</li>)}</td>
-                            }
-                            {this.state.persons.lastGameInfo !== undefined &&
-                            <td>{Array.from(this.state.persons.lastGameInfo.blueTeam).map((value, i) => <li
-                                key={i}>{value.stats.participantId}</li>)}</td>
                             }
                             {this.state.persons.lastGameInfo !== undefined &&
                             <td>{Array.from(this.state.persons.lastGameInfo.blueTeam).map((value, i) => <li
@@ -175,7 +170,6 @@ class Panel extends Component {
                         <thead>
                         <tr>
                             <th>Summoner Name</th>
-                            <th>Participant ID</th>
                             <th>Win</th>
                             <th>Kills</th>
                             <th>Deaths</th>
@@ -189,10 +183,6 @@ class Panel extends Component {
                             {this.state.persons.lastGameInfo !== undefined &&
                             <td>{Array.from(this.state.persons.lastGameInfo.redTeam).map((value, i) => <li
                                 key={i}>{value.summonerName}</li>)}</td>
-                            }
-                            {this.state.persons.lastGameInfo !== undefined &&
-                            <td>{Array.from(this.state.persons.lastGameInfo.redTeam).map((value, i) => <li
-                                key={i}>{value.stats.participantId}</li>)}</td>
                             }
                             {this.state.persons.lastGameInfo !== undefined &&
                             <td>{Array.from(this.state.persons.lastGameInfo.redTeam).map((value, i) => <li
