@@ -58,6 +58,8 @@ td{
 
 a {
     color: lightgrey;
+    position: center;
+    padding: 8px 5px;
 }
 
 a:hover {
@@ -70,5 +72,9 @@ button.MuiButtonBase-root-31.MuiButton-root-5.MuiButton-outlined-13 {
 }
 
 span.MuiButton-label-6 {
+    color: lightgrey;
+}
+
+span.MuiButton-label-19 {
     color: lightgrey;
 }
