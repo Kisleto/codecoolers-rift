@@ -4,7 +4,8 @@ import React, {Component} from "react";
 class InfoPage extends Component {
     state = {
         people: [],
-        name: ""
+        name: "",
+        region: ""
     };
 
     constructor(props) {
@@ -16,14 +17,13 @@ class InfoPage extends Component {
 
     componentWillReceiveProps(props) {
         this.setState({people: props});
-        console.log("__________________________________");
-        console.log(props)
+        this.setState({region: props.region});
     }
 
     render() {
         return (
             <div>
-                <Panel peeps={this.state.people}/>
+                <Panel peeps={this.state.people} region={this.state.region}/>
             </div>
         )
     }
