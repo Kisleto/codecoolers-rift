@@ -71,6 +71,7 @@ class DetailedExpansionPanel extends Component {
 
                         </NavDropdown>
                         <Link to="/login">Login</Link>
+                        <Link to="/registration">Register</Link>
                     </Nav>
                     <form onSubmit={this.handleSubmit}>
                         <input value={this.state.data} onChange={event => this.handleSummonerNameChange(event)}

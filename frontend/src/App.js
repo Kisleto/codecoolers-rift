@@ -5,6 +5,7 @@ import {HashRouter} from "react-router-dom";
 import {withStyles} from "@material-ui/core";
 import PropTypes from "prop-types";
 import Login from "./login"
+import Registration from "./registration";
 
 
 const styles = theme => ({
@@ -30,8 +31,17 @@ class App extends Component {
                     </div>
                 </HashRouter>
             )
-        } else {
+        } else if (window.location.href === "http://localhost:3000/#/registration") {
+            return (
+                <HashRouter>
+                    <div>
+                        <Registration/>
+                    </div>
+                </HashRouter>
 
+            )
+
+        } else {
             return (
                 <HashRouter>
                     <div>

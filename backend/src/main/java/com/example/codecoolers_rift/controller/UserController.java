@@ -12,10 +12,10 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
 
-    @PostMapping("localhost:3000/registration")
-    public void registration(@RequestParam String username, @RequestParam String password, @RequestParam String email){
+    @PostMapping("https://localhost:3000/#/registration")
+    public void registration(@RequestParam String summonerName, @RequestParam String password, @RequestParam String email){
         userRepository.save(Customer.builder()
-                .summonerName(username)
+                .summonerName(summonerName)
                 .email(email)
                 .password(password)
                 .build());
