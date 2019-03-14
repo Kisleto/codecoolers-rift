@@ -42,13 +42,13 @@ td{
 
 .button {
     display: block;
-    background-color: #4caf50;
+    background-color: white;
     min-width: 16px;
     width: 100%;
     padding: 5px 20px;
     z-index: 1;
     border: none;
-    color: white;
+    color: #000000;
     text-align: center;
     text-decoration: none;
     font-size: 16px;
